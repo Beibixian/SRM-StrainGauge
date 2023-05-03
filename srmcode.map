@@ -1,0 +1,998 @@
+******************************************************************************
+               TMS320C6x Linker PC v7.4.24                     
+******************************************************************************
+>> Linked Fri Apr 21 18:10:03 2023
+
+OUTPUT FILE NAME:   <srmcode.out>
+ENTRY POINT SYMBOL: "_c_int00"  address: 0c0fab60
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  IPC_ISR_REG           02620244   00000004  00000000  00000004  RWIX
+  DDR3_INIT_CODE        0c000000   00018000  00000000  00018000  RW X
+  USER_SRAM_1_4         0c018000   000e8000  000e6420  00001be0  RWIX
+  KNL0_SRAM_1_4         10800000   000fff80  00000000  000fff80  RWIX
+  KNL0_BOOT_AREA        108fff80   0000007c  00000000  0000007c  RWIX
+  KNL0_MAGIC_ADDRESS    108ffffc   00000004  00000000  00000004  RWIX
+  CTRL_PARAS            11800000   00000100  00000000  00000100  RWIX
+  KNL1_SRAM_1_2         11800100   0003ff00  00000000  0003ff00  RWIX
+  CSL_INTC              11840000   00010000  00000000  00010000  RWIX
+  USER_MAGIC_ADDRESS    118fff80   00000004  00000000  00000004  R   
+  KNL1_BOOT_AREA        118fff84   00000078  00000000  00000078  RWIX
+  KNL1_MAGIC_ADDRESS    118ffffc   00000004  00000000  00000004  RWIX
+  USER_SRAM_2_4         11e00000   00008000  00003a60  000045a0  RWIX
+  USER_SRAM_3_4         11f00000   00008000  000035a4  00004a5c  RWIX
+  TI_BOOT_ROM           20b00000   00020000  00000000  00020000  RWIX
+  KNL0_SRAM_2_4         80000000   000fe000  00000000  000fe000  RWIX
+  USER_SRAM_4_4         80100000   01800000  00000000  01800000  RWIX
+  KNL0_SRAM_3_4         82000000   0d000000  00000000  0d000000  RWIX
+  KNL0_SRAM_4_4         8f000000   01000000  00000000  01000000  RWIX
+  KNL1_SRAM_2_2         90000000   10000000  00000000  10000000  RWIX
+
+
+SEGMENT ALLOCATION MAP
+
+run origin  load origin   length   init length attrs members
+----------  ----------- ---------- ----------- ----- -------
+0c018000    0c018000    000df128   000df128    rw-
+  0c018000    0c018000    000df128   000df128    rw- .fardata
+0c0f7180    0c0f7180    00004000   00004000    r-x
+  0c0f7180    0c0f7180    00004000   00004000    r-x .text
+0c0fb180    0c0fb180    000000d8   00000000    rw-
+  0c0fb180    0c0fb180    000000d8   00000000    rw- .far
+0c0fb280    0c0fb280    00000090   00000090    r--
+  0c0fb280    0c0fb280    00000090   00000090    r-- .const
+0c0fb380    0c0fb380    00000010   00000010    r--
+  0c0fb380    0c0fb380    00000010   00000010    r-- .switch
+0c0fb400    0c0fb400    00003180   00003180    r--
+  0c0fb400    0c0fb400    00003180   00003180    r-- .cinit
+11e00000    11e00000    00003a60   00003a60    r-x
+  11e00000    11e00000    00003a60   00003a60    r-x .text_2
+11f00000    11f00000    00003558   00002498    rw-
+  11f00000    11f00000    00002498   00002498    rw- .data_2
+  11f02498    11f02498    00001000   00000000    rw- .stack
+  11f03498    11f03498    000000c0   00000000    rw- .bss
+11f03558    11f03558    0000004c   0000004c    rw-
+  11f03558    11f03558    0000004c   0000004c    rw- .neardata
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.fardata   0    0c018000    000df128     
+                  0c018000    000dc000     srmcode.obj (.fardata:strain_record)
+                  0c0f4000    00001000     srmcode.obj (.fardata:compensation)
+                  0c0f5000    00001000     srmcode.obj (.fardata:strain_avg)
+                  0c0f6000    00001000     srmcode.obj (.fardata:strain_ref)
+                  0c0f7000    000000a8     mwio4.lib : mw_platform.obj (.fardata)
+                  0c0f70a8    00000030     srmcode.obj (.fardata:adc_offset_BND1)
+                  0c0f70d8    00000020     srmcode.obj (.fardata:adc_offset_BND0)
+                  0c0f70f8    00000020     srmcode.obj (.fardata:adc_range_BND0)
+                  0c0f7118    0000000c     rts6600_elf.lib : exit.obj (.fardata)
+                  0c0f7124    00000004                     : errno.obj (.fardata)
+
+.text      0    0c0f7180    00004000     
+                  0c0f7180    00000aa0     srmcode.obj (.text:retain)
+                  0c0f7c20    00000a00     KlabIMP.obj (.text)
+                  0c0f8620    000006c0     mwio4.lib : mw_i2c_eeprom.obj (.text)
+                  0c0f8ce0    000005c0     rts6600_elf.lib : divd.obj (.text:__c6xabi_divd)
+                  0c0f92a0    000003c0     mwio4.lib : mw_spi.obj (.text)
+                  0c0f9660    00000360               : mw_flash.obj (.text)
+                  0c0f99c0    00000340               : mw_platform.obj (.text)
+                  0c0f9d00    00000300     srmcode.obj (.text)
+                  0c0fa000    00000280     rts6600_elf.lib : divf.obj (.text:__c6xabi_divf)
+                  0c0fa280    00000180                     : copy_decompress_rle.obj (.text:__TI_decompress_rle_core)
+                  0c0fa400    00000120                     : sqrtf.obj (.text:sqrtf)
+                  0c0fa520    00000100                     : autoinit.obj (.text:_auto_init_elf)
+                  0c0fa620    00000100                     : cpy_tbl.obj (.text:copy_in)
+                  0c0fa720    000000e0                     : divi.obj (.text:__divi)
+                  0c0fa800    000000c0                     : divu.obj (.text:__divu)
+                  0c0fa8c0    000000c0                     : exit.obj (.text:exit)
+                  0c0fa980    000000c0                     : tls.obj (.text:tls:init:__TI_tls_init)
+                  0c0faa40    000000a0                     : memcpy64.obj (.text:memcpy)
+                  0c0faae0    00000080                     : fixdu.obj (.text:__c6xabi_fixdu)
+                  0c0fab60    00000080                     : boot.obj (.text:_c_int00)
+                  0c0fabe0    00000080     mwio4.lib : PEV_LIB.obj (.text)
+                  0c0fac60    00000080               : mw_i2c.obj (.text)
+                  0c0face0    00000060     rts6600_elf.lib : cpp_init.obj (.text:__TI_cpp_init)
+                  0c0fad40    00000060                     : frcmpyd_div.obj (.text:__c6xabi_frcmpyd_div)
+                  0c0fada0    00000060                     : llshift.obj (.text:__c6xabi_llshru)
+                  0c0fae00    00000040                     : args_main.obj (.text:_args_main)
+                  0c0fae40    00000020     ti.csl.ae66 : csl_gpioGetBaseAddress.oe66 (.text:CSL_GPIO_open)
+                  0c0fae60    00000020     Main.obj (.text)
+                  0c0fae80    00000020     rts6600_elf.lib : errno.obj (.text:__c6xabi_errno_addr)
+                  0c0faea0    00000020                     : exit.obj (.text:abort)
+                  0c0faec0    00000020                     : copy_decompress_none.obj (.text:decompress:none:__TI_decompress_none)
+                  0c0faee0    00000020                     : copy_decompress_rle.obj (.text:decompress:rle24:__TI_decompress_rle24)
+                  0c0faf00    00000010     mwio4.lib : EMIF16.obj ($Tramp$S$$EMF_EnableIntr_s32)
+                  0c0faf10    00000010               : gpio_int.obj ($Tramp$S$$GPI_init_vo)
+                  0c0faf20    00000010               : mwintc.obj ($Tramp$S$$mwintc_setupApp)
+                  0c0faf30    00000010               : EMIF16.obj ($Tramp$S$$EMF_Read_s32)
+                  0c0faf40    00000010               : PEV_INV_LIB.obj ($Tramp$S$$PEV_inverter_start_pwm)
+                  0c0faf50    00000010               : PEV_INV_LIB.obj ($Tramp$S$$PEV_ad_start)
+                  0c0faf60    00000010               : mwintc.obj ($Tramp$S$$IRQ_globalEnable)
+                  0c0faf70    00000010               : PEV_INV_LIB.obj ($Tramp$S$$PEV_abz_write)
+                  0c0faf80    00000010               : PEV_INV_LIB.obj ($Tramp$S$$PEV_abz_get_resolver_pos)
+                  0c0faf90    00000010               : PEV_INV_LIB.obj ($Tramp$S$$PEV_abz_clear_resolver_err)
+                  0c0fafa0    00000010               : PEV_INV_LIB.obj ($Tramp$S$$PEV_abz_clear)
+                  0c0fafb0    00000010               : PEV_INV_LIB.obj ($Tramp$S$$PEV_abz_init_maxcount)
+                  0c0fafc0    00000010               : PEV_INV_LIB.obj ($Tramp$S$$PEV_abz_set_mode)
+                  0c0fafd0    00000010               : PEV_INV_LIB.obj ($Tramp$S$$PEV_inverter_init_adtrig_timing)
+                  0c0fafe0    00000010               : PEV_INV_LIB.obj ($Tramp$S$$PEV_inverter_enable_int)
+                  0c0faff0    00000010               : PEV_INV_LIB.obj ($Tramp$S$$PEV_inverter_set_uvw)
+                  0c0fb000    00000010               : PEV_INV_LIB.obj ($Tramp$S$$PEV_inverter_init)
+                  0c0fb010    00000010               : ADC_LIB.obj ($Tramp$S$$ADC_set_mode)
+                  0c0fb020    00000010               : PEV_INV_LIB.obj ($Tramp$S$$PEV_sync_ad_out)
+                  0c0fb030    00000010               : PEV_INV_LIB.obj ($Tramp$S$$PEV_ad_set_mode)
+                  0c0fb040    00000010               : ADC_LIB.obj ($Tramp$S$$ADC_set_offset)
+                  0c0fb050    00000010               : ADC_LIB.obj ($Tramp$S$$ADC_set_range)
+                  0c0fb060    00000010               : PEV_INV_LIB.obj ($Tramp$S$$PEV_ad_set_offset)
+                  0c0fb070    00000010               : PEV_INV_LIB.obj ($Tramp$S$$PEV_ad_set_range)
+                  0c0fb080    00000010               : ADC_LIB.obj ($Tramp$S$$ADC_init)
+                  0c0fb090    00000010               : PEV_INV_LIB.obj ($Tramp$S$$PEV_sync_ad_init)
+                  0c0fb0a0    00000010               : gpio_int.obj ($Tramp$S$$GPI_enable_int_vo)
+                  0c0fb0b0    00000010               : gpio_int.obj ($Tramp$S$$GPI_setVector_vo)
+                  0c0fb0c0    00000010               : PEV_INV_LIB.obj ($Tramp$S$$PEV_int_init)
+                  0c0fb0d0    00000010               : timer_lib.obj ($Tramp$S$$C6657_timer1_start)
+                  0c0fb0e0    00000010               : timer_lib.obj ($Tramp$S$$C6657_timer1_enable_int)
+                  0c0fb0f0    00000010               : timer_lib.obj ($Tramp$S$$C6657_timer1_init_vector)
+                  0c0fb100    00000010               : timer_lib.obj ($Tramp$S$$C6657_timer1_init)
+                  0c0fb110    00000010               : mwintc.obj ($Tramp$S$$IRQ_globalDisable)
+                  0c0fb120    00000010               : ADC_LIB.obj ($Tramp$S$$ADC_in_grp)
+                  0c0fb130    00000010               : PEV_INV_LIB.obj ($Tramp$S$$PEV_inverter_control_gate)
+                  0c0fb140    00000010               : PEV_INV_LIB.obj ($Tramp$S$$PEV_abz_read)
+                  0c0fb150    00000010               : gpio_int.obj ($Tramp$S$$GPI_int_ack_vo)
+                  0c0fb160    00000010               : PEV_INV_LIB.obj ($Tramp$S$$PEV_ad_in_grp)
+                  0c0fb170    00000010               : timer_lib.obj ($Tramp$S$$C6657_timer1_clear_eventflag)
+
+.far       0    0c0fb180    000000d8     UNINITIALIZED
+                  0c0fb180    00000084     srmcode.obj (.far)
+                  0c0fb204    00000048     KlabIMP.obj (.far)
+                  0c0fb24c    0000000c     mwio4.lib : EMIF16.obj (.far)
+
+.const     0    0c0fb280    00000090     
+                  0c0fb280    00000090     KlabIMP.obj (.const)
+
+.switch    0    0c0fb380    00000010     
+                  0c0fb380    00000010     mwio4.lib : mw_flash.obj (.switch:mw_nor_erase)
+
+.cinit     0    0c0fb400    00003180     
+                  0c0fb400    0000206a     (.cinit..data_2.load) [load image, compression = rle]
+                  0c0fd46a    00000002     --HOLE-- [fill = 0]
+                  0c0fd46c    000010c9     (.cinit..fardata.load) [load image, compression = rle]
+                  0c0fe535    00000003     --HOLE-- [fill = 0]
+                  0c0fe538    00000025     (.cinit..neardata.load) [load image, compression = rle]
+                  0c0fe55d    00000003     --HOLE-- [fill = 0]
+                  0c0fe560    00000008     (__TI_handler_table)
+                  0c0fe568    00000018     (__TI_cinit_table)
+
+.text_2    0    11e00000    00003a60     
+                  11e00000    00001960     mwio4.lib : PEV_INV_LIB.obj (.text)
+                  11e01960    00000680               : ADC_LIB.obj (.text)
+                  11e01fe0    00000640               : timer_lib.obj (.text)
+                  11e02620    00000620               : EMIF16.obj (.text)
+                  11e02c40    00000440               : mwintc.obj (.text)
+                  11e03080    00000320               : csl2_intcHwControl.obj (.text:csl_section:intc)
+                  11e033a0    000001e0               : EMIF16.obj (.text:retain)
+                  11e03580    000001a0               : gpio_int.obj (.text)
+                  11e03720    00000180               : csl2_intcOpen.obj (.text:csl_section:intc)
+                  11e038a0    00000140               : _csl2_intcIntrEnDisRes_eabi.obj (.text)
+                  11e039e0    00000020               : _csl2_intcDispatcher.obj (.text:csl_section:intc)
+                  11e03a00    00000020               : _csl2_intcDispatcher.obj (.text:csl_section:intc:retain)
+                  11e03a20    00000010     ti.csl.ae66 : csl_gpioGetBaseAddress.oe66 ($Tramp$S$$CSL_GPIO_open)
+                  11e03a30    00000010     rts6600_elf.lib : fixdu.obj ($Tramp$S$$__c6xabi_fixdu)
+                  11e03a40    00000010                     : divd.obj ($Tramp$S$$__c6xabi_divd)
+                  11e03a50    00000010                     : divi.obj ($Tramp$S$$__c6xabi_divi)
+
+.data_2    0    11f00000    00002498     
+                  11f00000    000001e0     mwio4.lib : ADC_LIB.obj (.far) [fill = 0]
+                  11f001e0    00000170               : PEV_INV_LIB.obj (.far) [fill = 0]
+                  11f00350    000000c0               : gpio_int.obj (.far) [fill = 0]
+                  11f00410    00000024               : timer_lib.obj (.far) [fill = 0]
+                  11f00434    00000018               : csl2_intcHwControl.obj (.switch:CSL2_intcHwControl)
+                  11f0044c    00000004     --HOLE--
+                  11f00450    00000040               : gpio_int.obj (.fardata:gpio_int_map)
+                  11f00490    00002008               : _mwsintbl.obj (.const:_mwSinTbl)
+
+.stack     0    11f02498    00001000     UNINITIALIZED
+                  11f02498    00000008     rts6600_elf.lib : boot.obj (.stack)
+                  11f024a0    00000ff8     --HOLE--
+
+.bss       0    11f03498    000000c0     UNINITIALIZED
+                  11f03498    000000b0     srmcode.obj (.bss)
+                  11f03548    00000008     mwio4.lib : EMIF16.obj (.bss)
+                  11f03550    00000004               : gpio_int.obj (.bss)
+                  11f03554    00000004               : mw_spi.obj (.bss)
+
+.neardata 
+*          0    11f03558    0000004c     
+                  11f03558    00000038     srmcode.obj (.neardata)
+                  11f03590    0000000c     mwio4.lib : timer_lib.obj (.neardata)
+                  11f0359c    00000004               : csl2_intcOpen.obj (.neardata)
+                  11f035a0    00000004               : mw_platform.obj (.neardata)
+
+
+LINKER GENERATED COPY TABLES
+
+__TI_cinit_table @ 0c0fe568 records: 3, size/record: 8, table size: 24
+	.data_2: load addr=0c0fb400, load size=0000206a bytes, run addr=11f00000, run size=00002498 bytes, compression=rle
+	.fardata: load addr=0c0fd46c, load size=000010c9 bytes, run addr=0c018000, run size=000df128 bytes, compression=rle
+	.neardata: load addr=0c0fe538, load size=00000025 bytes, run addr=11f03558, run size=0000004c bytes, compression=rle
+
+
+LINKER GENERATED HANDLER TABLE
+
+__TI_handler_table @ 0c0fe560 records: 2, size/record: 4, table size: 8
+	index: 0, handler: __TI_decompress_rle24
+	index: 1, handler: __TI_decompress_none
+
+
+FAR CALL TRAMPOLINES
+
+callee name               trampoline name
+   callee addr  tramp addr   call addr  call info
+--------------  -----------  ---------  ----------------
+$.text:mwio4.lib<EMIF16.obj>$0x58c  $Tramp$S$$EMF_EnableIntr_s32
+   11e02bac     0c0faf00     0c0fae6c   Main.obj (.text)
+$.text:mwio4.lib<gpio_int.obj>$0x124  $Tramp$S$$GPI_init_vo
+   11e036a4     0c0faf10     0c0fae68   Main.obj (.text)
+$.text:mwio4.lib<mwintc.obj>$0x34  $Tramp$S$$mwintc_setupApp
+   11e02c74     0c0faf20     0c0fae64   Main.obj (.text)
+$.text:mwio4.lib<EMIF16.obj>$0x218  $Tramp$S$$EMF_Read_s32
+   11e02838     0c0faf30     0c0fac28   mwio4.lib : PEV_LIB.obj (.text)
+$.text:mwio4.lib<PEV_INV_LIB.obj>$0x394  $Tramp$S$$PEV_inverter_start_pwm
+   11e00394     0c0faf40     0c0f9fe8   srmcode.obj (.text)
+$.text:mwio4.lib<PEV_INV_LIB.obj>$0xf10  $Tramp$S$$PEV_ad_start
+   11e00f10     0c0faf50     0c0f9fe0   srmcode.obj (.text)
+$.text:mwio4.lib<mwintc.obj>$0x3f0  $Tramp$S$$IRQ_globalEnable
+   11e03030     0c0faf60     0c0f9fcc   srmcode.obj (.text)
+$.text:mwio4.lib<PEV_INV_LIB.obj>$0x16e8  $Tramp$S$$PEV_abz_write
+   11e016e8     0c0faf70     0c0f9fc4   srmcode.obj (.text)
+$.text:mwio4.lib<PEV_INV_LIB.obj>$0x1864  $Tramp$S$$PEV_abz_get_resolver_pos
+   11e01864     0c0faf80     0c0f9fc0   srmcode.obj (.text)
+$.text:mwio4.lib<PEV_INV_LIB.obj>$0x18e0  $Tramp$S$$PEV_abz_clear_resolver_err
+   11e018e0     0c0faf90     0c0f9fb4   srmcode.obj (.text)
+$.text:mwio4.lib<PEV_INV_LIB.obj>$0x1914  $Tramp$S$$PEV_abz_clear
+   11e01914     0c0fafa0     0c0f9fb0   srmcode.obj (.text)
+$.text:mwio4.lib<PEV_INV_LIB.obj>$0x17e8  $Tramp$S$$PEV_abz_init_maxcount
+   11e017e8     0c0fafb0     0c0f9fa8   srmcode.obj (.text)
+$.text:mwio4.lib<PEV_INV_LIB.obj>$0x1734  $Tramp$S$$PEV_abz_set_mode
+   11e01734     0c0fafc0     0c0f9f98   srmcode.obj (.text)
+$.text:mwio4.lib<PEV_INV_LIB.obj>$0xaa8  $Tramp$S$$PEV_inverter_init_adtrig_timing
+   11e00aa8     0c0fafd0     0c0f9f8c   srmcode.obj (.text)
+$.text:mwio4.lib<PEV_INV_LIB.obj>$0xcf4  $Tramp$S$$PEV_inverter_enable_int
+   11e00cf4     0c0fafe0     0c0f9f88   srmcode.obj (.text)
+$.text:mwio4.lib<PEV_INV_LIB.obj>$0x5e8  $Tramp$S$$PEV_inverter_set_uvw
+   11e005e8     0c0faff0     0c0f9f78   srmcode.obj (.text)
+$.text:mwio4.lib<PEV_INV_LIB.obj>$0xb84  $Tramp$S$$PEV_inverter_init
+   11e00b84     0c0fb000     0c0f9f68   srmcode.obj (.text)
+$.text:mwio4.lib<ADC_LIB.obj>$0xe0  $Tramp$S$$ADC_set_mode
+   11e01a40     0c0fb010     0c0f9f58   srmcode.obj (.text)
+$.text:mwio4.lib<PEV_INV_LIB.obj>$0x2b4  $Tramp$S$$PEV_sync_ad_out
+   11e002b4     0c0fb020     0c0f9f50   srmcode.obj (.text)
+$.text:mwio4.lib<PEV_INV_LIB.obj>$0xfe0  $Tramp$S$$PEV_ad_set_mode
+   11e00fe0     0c0fb030     0c0f9f48   srmcode.obj (.text)
+$.text:mwio4.lib<ADC_LIB.obj>$0xb4  $Tramp$S$$ADC_set_offset
+   11e01a14     0c0fb040     0c0f9f40   srmcode.obj (.text)
+$.text:mwio4.lib<ADC_LIB.obj>$0x70  $Tramp$S$$ADC_set_range
+   11e019d0     0c0fb050     0c0f9f2c   srmcode.obj (.text)
+$.text:mwio4.lib<PEV_INV_LIB.obj>$0xf98  $Tramp$S$$PEV_ad_set_offset
+   11e00f98     0c0fb060     0c0f9f24   srmcode.obj (.text)
+                             0c0fac00   mwio4.lib : PEV_LIB.obj (.text)
+$.text:mwio4.lib<PEV_INV_LIB.obj>$0xf48  $Tramp$S$$PEV_ad_set_range
+   11e00f48     0c0fb070     0c0f9f14   srmcode.obj (.text)
+$.text:mwio4.lib<ADC_LIB.obj>$0x2a4  $Tramp$S$$ADC_init
+   11e01c04     0c0fb080     0c0f9f00   srmcode.obj (.text)
+$.text:mwio4.lib<PEV_INV_LIB.obj>$0x30c  $Tramp$S$$PEV_sync_ad_init
+   11e0030c     0c0fb090     0c0f9ef4   srmcode.obj (.text)
+$.text:mwio4.lib<gpio_int.obj>$0x14c  $Tramp$S$$GPI_enable_int_vo
+   11e036cc     0c0fb0a0     0c0f9eec   srmcode.obj (.text)
+$.text:mwio4.lib<gpio_int.obj>$0x0  $Tramp$S$$GPI_setVector_vo
+   11e03580     0c0fb0b0     0c0f9edc   srmcode.obj (.text)
+$.text:mwio4.lib<PEV_INV_LIB.obj>$0xde0  $Tramp$S$$PEV_int_init
+   11e00de0     0c0fb0c0     0c0f9ec4   srmcode.obj (.text)
+$.text:mwio4.lib<timer_lib.obj>$0x320  $Tramp$S$$C6657_timer1_start
+   11e02300     0c0fb0d0     0c0f9ea8   srmcode.obj (.text)
+$.text:mwio4.lib<timer_lib.obj>$0x3e4  $Tramp$S$$C6657_timer1_enable_int
+   11e023c4     0c0fb0e0     0c0f9ea4   srmcode.obj (.text)
+$.text:mwio4.lib<timer_lib.obj>$0x34c  $Tramp$S$$C6657_timer1_init_vector
+   11e0232c     0c0fb0f0     0c0f9ea0   srmcode.obj (.text)
+$.text:mwio4.lib<timer_lib.obj>$0x370  $Tramp$S$$C6657_timer1_init
+   11e02350     0c0fb100     0c0f9e88   srmcode.obj (.text)
+$.text:mwio4.lib<mwintc.obj>$0x410  $Tramp$S$$IRQ_globalDisable
+   11e03050     0c0fb110     0c0f9e78   srmcode.obj (.text)
+$.text:mwio4.lib<ADC_LIB.obj>$0x314  $Tramp$S$$ADC_in_grp
+   11e01c74     0c0fb120     0c0f7634   srmcode.obj (.text:retain)
+$.text:mwio4.lib<PEV_INV_LIB.obj>$0xd70  $Tramp$S$$PEV_inverter_control_gate
+   11e00d70     0c0fb130     0c0f74c8   srmcode.obj (.text:retain)
+                             0c0f74cc   srmcode.obj (.text:retain)
+$.text:mwio4.lib<PEV_INV_LIB.obj>$0x17a4  $Tramp$S$$PEV_abz_read
+   11e017a4     0c0fb140     0c0f73c0   srmcode.obj (.text:retain)
+$.text:mwio4.lib<gpio_int.obj>$0xd4  $Tramp$S$$GPI_int_ack_vo
+   11e03654     0c0fb150     0c0f736c   srmcode.obj (.text:retain)
+$.text:mwio4.lib<PEV_INV_LIB.obj>$0x106c  $Tramp$S$$PEV_ad_in_grp
+   11e0106c     0c0fb160     0c0f720c   srmcode.obj (.text:retain)
+                             0c0f7384   srmcode.obj (.text:retain)
+$.text:mwio4.lib<timer_lib.obj>$0x480  $Tramp$S$$C6657_timer1_clear_eventflag
+   11e02460     0c0fb170     0c0f7204   srmcode.obj (.text:retain)
+$.text:CSL_GPIO_open:ti.csl.ae66<csl_gpioGetBaseAddress.oe66>$0x0  $Tramp$S$$CSL_GPIO_open
+   0c0fae40     11e03a20     11e036a8   mwio4.lib : gpio_int.obj (.text)
+$.text:__c6xabi_fixdu:rts6600_elf.lib<fixdu.obj>$0x0  $Tramp$S$$__c6xabi_fixdu
+   0c0faae0     11e03a30     11e0209c   mwio4.lib : timer_lib.obj (.text)
+                             11e02210             : timer_lib.obj (.text)
+                             11e023b0             : timer_lib.obj (.text)
+                             11e02550             : timer_lib.obj (.text)
+$.text:__c6xabi_divd:rts6600_elf.lib<divd.obj>$0x0  $Tramp$S$$__c6xabi_divd
+   0c0f8ce0     11e03a40     11e02094   mwio4.lib : timer_lib.obj (.text)
+                             11e02208             : timer_lib.obj (.text)
+                             11e023a8             : timer_lib.obj (.text)
+                             11e02548             : timer_lib.obj (.text)
+$.text:__divi:rts6600_elf.lib<divi.obj>$0x0  $Tramp$S$$__c6xabi_divi
+   0c0fa720     11e03a50     11e001f8   mwio4.lib : PEV_INV_LIB.obj (.text)
+                             11e00448             : PEV_INV_LIB.obj (.text)
+                             11e00470             : PEV_INV_LIB.obj (.text)
+                             11e00658             : PEV_INV_LIB.obj (.text)
+                             11e00684             : PEV_INV_LIB.obj (.text)
+                             11e00a48             : PEV_INV_LIB.obj (.text)
+                             11e00b24             : PEV_INV_LIB.obj (.text)
+                             11e00bec             : PEV_INV_LIB.obj (.text)
+
+[44 trampolines]
+[60 trampoline calls]
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address    name
+--------   ----
+11e01fb0   ADC_cfg_sync_out
+11e01f90   ADC_get_fpga_ver
+11e01e14   ADC_in_4ch
+11e01c74   ADC_in_grp
+11e01c58   ADC_in_st
+11e01c04   ADC_init
+11e01b40   ADC_int_init
+11e01b14   ADC_set_edge
+11e01a40   ADC_set_mode
+11e01a14   ADC_set_offset
+11e019d0   ADC_set_range
+11e01980   ADC_set_trigger_offset
+11e01960   ADC_start
+11f034a4   A_aligned_encoder_count
+0c0faea0   C$$EXIT
+11e0260c   C6657_timer0_clear
+11e025f8   C6657_timer0_clear_eventflag
+11e025b8   C6657_timer0_disable_int
+11e02564   C6657_timer0_enable_int
+11e024f0   C6657_timer0_init
+11e024cc   C6657_timer0_init_vector
+11e024c0   C6657_timer0_read
+11e024a0   C6657_timer0_start
+11e02488   C6657_timer0_stop
+11e02478   C6657_timer0_write
+11e0246c   C6657_timer1_clear
+11e02460   C6657_timer1_clear_eventflag
+11e02418   C6657_timer1_disable_int
+11e023c4   C6657_timer1_enable_int
+11e02350   C6657_timer1_init
+11e0232c   C6657_timer1_init_vector
+11e02320   C6657_timer1_read
+11e02300   C6657_timer1_start
+11e022e8   C6657_timer1_stop
+11e022d8   C6657_timer1_write
+11e022cc   C6657_timer2_clear
+11e022c0   C6657_timer2_clear_eventflag
+11e02278   C6657_timer2_disable_int
+11e02224   C6657_timer2_enable_int
+11e021b0   C6657_timer2_init
+11e02168   C6657_timer2_init_vector
+11e02158   C6657_timer2_read
+11e02134   C6657_timer2_start
+11e02120   C6657_timer2_stop
+11e02114   C6657_timer2_write
+11e02104   C6657_timer3_hi_clear_eventflag
+11e020ac   C6657_timer3_hi_enable_int
+11e02038   C6657_timer3_hi_init
+11e02014   C6657_timer3_hi_init_vector
+11e01ff4   C6657_timer3_hi_start
+11e01fe0   C6657_timer3_hi_stop
+11e03080   CSL2_intcHwControl
+11e03734   CSL2_intcOpen2
+11e03720   CSL2_loadResource
+0c0fae40   CSL_GPIO_open
+11e03928   CSL_intcGlobalEnable
+11e03980   CSL_intcGlobalNmiEnable
+11e038c0   CSL_intcInterruptDisable
+11e038a0   CSL_intcInterruptEnable
+11e02bac   EMF_EnableIntr_s32
+11e033a0   EMF_ErrIntr_vo
+11f0354c   EMF_ExtWaitErrCnt_u32s
+11f03548   EMF_ExtWaitErrInfo_u32s
+11e02b4c   EMF_Initialization_s32
+11e02a94   EMF_Read2_s32
+11e02a28   EMF_Read3_s32
+11e02960   EMF_ReadFlashRom_s32
+11e028ac   EMF_ReadFpgaBoard_s32
+11e02838   EMF_Read_s32
+11e027a0   EMF_Write2_s32
+11e02698   EMF_WriteFlashRom_s32
+11e02620   EMF_Write_s32
+0c0fb24c   EMIF_IntrErr_sts
+11e036ec   GPI_disable_int_vo
+11e036cc   GPI_enable_int_vo
+11e036a4   GPI_init_vo
+11e03654   GPI_int_ack_vo
+11e03580   GPI_setVector_vo
+11e03050   IRQ_globalDisable
+11e03030   IRQ_globalEnable
+11e03028   IRQ_globalRestore
+11f03538   Idc
+0c0f81f0   KLAB_curCtrl_output_outVol
+0c0f8020   KLAB_curCtrl_update_ssFunc
+0c0f9df0   MW_main
+11e01914   PEV_abz_clear
+11e018e0   PEV_abz_clear_resolver_err
+11e018a4   PEV_abz_get_resolver_err
+11e01864   PEV_abz_get_resolver_pos
+11e01834   PEV_abz_in_pin
+11e017e8   PEV_abz_init_maxcount
+11e017a4   PEV_abz_read
+11e01734   PEV_abz_set_mode
+11e016e8   PEV_abz_write
+11e01494   PEV_ad_abz_read
+11e01460   PEV_ad_disable_int
+11e01418   PEV_ad_enable_int
+11e012b0   PEV_ad_in_4ch
+11e0106c   PEV_ad_in_grp
+11e01040   PEV_ad_in_st
+11e00fe0   PEV_ad_set_mode
+11e00f98   PEV_ad_set_offset
+11e00f48   PEV_ad_set_range
+11e00f10   PEV_ad_start
+0c0fac24   PEV_get_fpga_ver
+0c0fabe0   PEV_init
+11e00de0   PEV_int_init
+11e00da8   PEV_inverter_control_break
+11e00d70   PEV_inverter_control_gate
+11e00d38   PEV_inverter_disable_int
+11e00cf4   PEV_inverter_enable_int
+11e00b84   PEV_inverter_init
+11e00aa8   PEV_inverter_init_adtrig_timing
+11e009b8   PEV_inverter_init_int_timing
+11e00958   PEV_inverter_init_refload_timing
+11e008d4   PEV_inverter_set_ab
+11e007d4   PEV_inverter_set_ra
+11e005e8   PEV_inverter_set_uvw
+11e003cc   PEV_inverter_set_uvw_br
+11e00394   PEV_inverter_start_pwm
+11e00360   PEV_inverter_stop_pwm
+11e0030c   PEV_sync_ad_init
+11e002b4   PEV_sync_ad_out
+11e00260   PEV_sync_pwm_init
+11e00150   PEV_sync_pwm_out
+11e00100   PEV_sync_z_out
+11e000c8   PEV_updown_clear_cnt
+11e00078   PEV_updown_init_maxcount
+11e00034   PEV_updown_read_cnt
+11e00000   PEV_updown_set_mode
+11f03508   SCOPE_abz
+11f03520   SCOPE_compensation
+11f034f0   SCOPE_fedIu
+11f034f4   SCOPE_fedIv
+11f034f8   SCOPE_fedIw
+11f03510   SCOPE_omega
+11f034fc   SCOPE_outVu
+11f03500   SCOPE_outVv
+11f03504   SCOPE_outVw
+11f03528   SCOPE_refIu
+11f0352c   SCOPE_refIv
+11f03530   SCOPE_refIw
+11f03514   SCOPE_rpm
+11f03518   SCOPE_strain_avg
+11f0351c   SCOPE_strain_ref
+11f0350c   SCOPE_theta
+11f03524   SCOPE_torque
+0c0f7598   StrainGaugeRead
+11f0349c   StrainGaugeRead_interval
+11f03534   Vdc
+11e03a00   _CSL2_intcDispatcherDummy
+11e03948   _CSL_intcGlobalDisable
+11e039bc   _CSL_intcGlobalExcepClear
+11e03994   _CSL_intcGlobalExcepEnable
+11e039a8   _CSL_intcGlobalExtExcepEnable
+11e03968   _CSL_intcGlobalRestore
+11e038e0   _CSL_intcInterruptClear
+11e038f8   _CSL_intcInterruptRestore
+11e038ec   _CSL_intcInterruptSet
+11e03910   _CSL_intcQueryInterruptStatus
+0c0fe568   __TI_CINIT_Base
+0c0fe580   __TI_CINIT_Limit
+0c0fe560   __TI_Handler_Table_Base
+0c0fe568   __TI_Handler_Table_Limit
+UNDEFED    __TI_INITARRAY_Base
+UNDEFED    __TI_INITARRAY_Limit
+11f03498   __TI_STACK_END
+00001000   __TI_STACK_SIZE
+11f03498   __TI_STATIC_BASE
+UNDEFED    __TI_TLS_INIT_Base
+UNDEFED    __TI_TLS_INIT_Limit
+00000001   __TI_args_main
+0c0face0   __TI_cpp_init
+0c0faec0   __TI_decompress_none
+0c0faee0   __TI_decompress_rle24
+0c0f7120   __TI_enable_exit_profile_output
+ffffffff   __TI_pprof_out_hndl
+ffffffff   __TI_prof_data_size
+ffffffff   __TI_prof_data_start
+0c0fa980   __TI_tls_init
+ffffffff   __binit__
+0c0f8ce0   __c6xabi_divd
+0c0fa000   __c6xabi_divf
+0c0fa720   __c6xabi_divi
+0c0fa800   __c6xabi_divu
+0c0fae80   __c6xabi_errno_addr
+0c0faae0   __c6xabi_fixdu
+0c0fad40   __c6xabi_frcmpyd_div
+0c0fada0   __c6xabi_llshru
+ffffffff   __c_args__
+0c0fa720   __divi
+0c0fa800   __divu
+0c0f7124   __errno
+0c0fae00   _args_main
+0c0fa520   _auto_init_elf
+0c0fab60   _c_int00
+0c0f7118   _cleanup_ptr
+0c0f711c   _dtors_ptr
+11f00490   _mwSinTbl
+11f02498   _stack
+0c0faea0   abort
+11f0357c   abz_prev
+0c0f70d8   adc_offset_BND0
+0c0f70a8   adc_offset_BND1
+0c0f70f8   adc_range_BND0
+11f0353c   adjustFedIu
+ffffffff   binit
+11e02d08   cic0Out2Evnt
+0c0f7e0c   combineFourierSeries
+0c0f4000   compensation
+0c0fa620   copy_in
+11f03560   current_step
+0c0fb180   data
+0c0f7124   errno
+0c0fac60   evmI2CInit
+0c0fa8c0   exit
+11f03584   factor_cal_time
+0c0fb1d4   fedCurrent
+0c0fb280   fedGain
+0c0f72e4   gateControl
+11f03498   gateControl_interval
+11f034b0   gateSignalSequence
+0c0f7fe4   generate_gateSignalSequence_Hysterisis
+0c0f7fa0   generate_phase_gateSignalSequence
+0c0f7cb8   generate_phase_square_reference
+0c0f7ea4   generate_proposed_reference
+0c0f7d44   generate_square_reference
+11f00450   gpio_int_map
+11f03550   hGpio
+11f0355c   hy_band
+11f03540   hysFLagIu
+11f034a8   hysterisis_limit
+11f034b4   i0
+11f034b8   i1
+11f034bc   i2
+0c0f8b74   i2cEepromGetStatus2
+0c0f89f8   i2cEepromRead2
+0c0f8668   i2cEepromWriteBlock2
+0c0f88e0   i2cEepromWriteByteAddr2
+11f034c0   i3
+11e02fe8   int_begin_nestint
+11e02f98   int_end_nestint
+11f00350   intcObj
+11f034ac   inverter_on
+11f03578   lock_avg_record
+0c0fae60   main
+0c0faa40   memcpy
+0c0f9cc4   mw_Osal_platformSpiCsEnter
+0c0f9cb0   mw_Osal_platformSpiCsExit
+11f0359c   mw_gp__CSL_intcCpuIntrTable
+0c0f98b8   mw_nor_erase
+0c0f984c   mw_nor_get_details
+0c0f97d8   mw_nor_init
+0c0f9724   mw_nor_read
+0c0f9660   mw_nor_write
+0c0f9c90   mw_platform_delaycycles
+0c0f9c24   mw_platform_device_close
+0c0f9be4   mw_platform_device_erase_block
+0c0f9b0c   mw_platform_device_open
+0c0f9a70   mw_platform_device_read
+0c0f99d4   mw_platform_device_write
+11f035a0   mw_platform_errno
+11e039e0   mw_setVect
+0c0f94d8   mw_spi_claim
+0c0f946c   mw_spi_cmd
+0c0f9460   mw_spi_cmd_read
+0c0f9450   mw_spi_cmd_write
+0c0f93e4   mw_spi_release
+0c0f92a0   mw_spi_xfer
+11e02f84   mwintc_clearSysInterrupt
+11e02f6c   mwintc_disableHostInterrupt
+11e02f54   mwintc_disableSysInterrupt
+11e02f40   mwintc_enableHostInterrupt
+11e02f28   mwintc_enableSysInterrupt
+11e02ef8   mwintc_getInterruptStatus
+11e02ee0   mwintc_mapSystemIntrToChannel
+11e02d94   mwintc_setup
+11e02e14   mwintc_setup2
+11e02c74   mwintc_setupApp
+11f03588   n_com
+11f0358c   n_offset
+0c0fb1ec   outVoltage
+11f034c4   p1_deg
+11f034d0   p1_rad
+11f034c8   p2_deg
+11f034d4   p2_rad
+11f034cc   p3_deg
+11f034d8   p3_rad
+0c0f99c0   platform_write
+0c0f7c58   proposed_phase_deg2rad
+0c0fb1bc   refCurrent
+0c0fb1a0   rotateValue
+11f03580   rotate_period_count_cal
+11f03574   row_avg_cal
+11f03564   row_avg_record
+0c0f9d00   scope
+0c0f7180   scope_interrupt
+11f034a0   scope_interval
+11f0356c   serial_avg_cal
+11f03568   serial_avg_record
+0c0fa400   sqrtf
+11f034ec   square_peak
+0c0f7c20   square_phase_deg2rad
+0c0fb228   ssFunc_output_Y
+0c0fb204   ssFunc_states_X
+11f03544   strain
+0c0f5000   strain_avg
+11f03558   strain_offset
+0c018000   strain_record
+0c0f6000   strain_ref
+11f03570   sum_strain_row
+11f034e0   theta_off_deg
+11f034e8   theta_off_rad
+11f034dc   theta_on_deg
+11f034e4   theta_on_rad
+11f03590   tmr1regs
+11f03594   tmr2regs
+11f03598   tmr3regs
+11f034b2   virtual_frequency
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address    name
+--------   ----
+00000001   __TI_args_main
+00001000   __TI_STACK_SIZE
+0c018000   strain_record
+0c0f4000   compensation
+0c0f5000   strain_avg
+0c0f6000   strain_ref
+0c0f70a8   adc_offset_BND1
+0c0f70d8   adc_offset_BND0
+0c0f70f8   adc_range_BND0
+0c0f7118   _cleanup_ptr
+0c0f711c   _dtors_ptr
+0c0f7120   __TI_enable_exit_profile_output
+0c0f7124   __errno
+0c0f7124   errno
+0c0f7180   scope_interrupt
+0c0f72e4   gateControl
+0c0f7598   StrainGaugeRead
+0c0f7c20   square_phase_deg2rad
+0c0f7c58   proposed_phase_deg2rad
+0c0f7cb8   generate_phase_square_reference
+0c0f7d44   generate_square_reference
+0c0f7e0c   combineFourierSeries
+0c0f7ea4   generate_proposed_reference
+0c0f7fa0   generate_phase_gateSignalSequence
+0c0f7fe4   generate_gateSignalSequence_Hysterisis
+0c0f8020   KLAB_curCtrl_update_ssFunc
+0c0f81f0   KLAB_curCtrl_output_outVol
+0c0f8668   i2cEepromWriteBlock2
+0c0f88e0   i2cEepromWriteByteAddr2
+0c0f89f8   i2cEepromRead2
+0c0f8b74   i2cEepromGetStatus2
+0c0f8ce0   __c6xabi_divd
+0c0f92a0   mw_spi_xfer
+0c0f93e4   mw_spi_release
+0c0f9450   mw_spi_cmd_write
+0c0f9460   mw_spi_cmd_read
+0c0f946c   mw_spi_cmd
+0c0f94d8   mw_spi_claim
+0c0f9660   mw_nor_write
+0c0f9724   mw_nor_read
+0c0f97d8   mw_nor_init
+0c0f984c   mw_nor_get_details
+0c0f98b8   mw_nor_erase
+0c0f99c0   platform_write
+0c0f99d4   mw_platform_device_write
+0c0f9a70   mw_platform_device_read
+0c0f9b0c   mw_platform_device_open
+0c0f9be4   mw_platform_device_erase_block
+0c0f9c24   mw_platform_device_close
+0c0f9c90   mw_platform_delaycycles
+0c0f9cb0   mw_Osal_platformSpiCsExit
+0c0f9cc4   mw_Osal_platformSpiCsEnter
+0c0f9d00   scope
+0c0f9df0   MW_main
+0c0fa000   __c6xabi_divf
+0c0fa400   sqrtf
+0c0fa520   _auto_init_elf
+0c0fa620   copy_in
+0c0fa720   __c6xabi_divi
+0c0fa720   __divi
+0c0fa800   __c6xabi_divu
+0c0fa800   __divu
+0c0fa8c0   exit
+0c0fa980   __TI_tls_init
+0c0faa40   memcpy
+0c0faae0   __c6xabi_fixdu
+0c0fab60   _c_int00
+0c0fabe0   PEV_init
+0c0fac24   PEV_get_fpga_ver
+0c0fac60   evmI2CInit
+0c0face0   __TI_cpp_init
+0c0fad40   __c6xabi_frcmpyd_div
+0c0fada0   __c6xabi_llshru
+0c0fae00   _args_main
+0c0fae40   CSL_GPIO_open
+0c0fae60   main
+0c0fae80   __c6xabi_errno_addr
+0c0faea0   C$$EXIT
+0c0faea0   abort
+0c0faec0   __TI_decompress_none
+0c0faee0   __TI_decompress_rle24
+0c0fb180   data
+0c0fb1a0   rotateValue
+0c0fb1bc   refCurrent
+0c0fb1d4   fedCurrent
+0c0fb1ec   outVoltage
+0c0fb204   ssFunc_states_X
+0c0fb228   ssFunc_output_Y
+0c0fb24c   EMIF_IntrErr_sts
+0c0fb280   fedGain
+0c0fe560   __TI_Handler_Table_Base
+0c0fe568   __TI_CINIT_Base
+0c0fe568   __TI_Handler_Table_Limit
+0c0fe580   __TI_CINIT_Limit
+11e00000   PEV_updown_set_mode
+11e00034   PEV_updown_read_cnt
+11e00078   PEV_updown_init_maxcount
+11e000c8   PEV_updown_clear_cnt
+11e00100   PEV_sync_z_out
+11e00150   PEV_sync_pwm_out
+11e00260   PEV_sync_pwm_init
+11e002b4   PEV_sync_ad_out
+11e0030c   PEV_sync_ad_init
+11e00360   PEV_inverter_stop_pwm
+11e00394   PEV_inverter_start_pwm
+11e003cc   PEV_inverter_set_uvw_br
+11e005e8   PEV_inverter_set_uvw
+11e007d4   PEV_inverter_set_ra
+11e008d4   PEV_inverter_set_ab
+11e00958   PEV_inverter_init_refload_timing
+11e009b8   PEV_inverter_init_int_timing
+11e00aa8   PEV_inverter_init_adtrig_timing
+11e00b84   PEV_inverter_init
+11e00cf4   PEV_inverter_enable_int
+11e00d38   PEV_inverter_disable_int
+11e00d70   PEV_inverter_control_gate
+11e00da8   PEV_inverter_control_break
+11e00de0   PEV_int_init
+11e00f10   PEV_ad_start
+11e00f48   PEV_ad_set_range
+11e00f98   PEV_ad_set_offset
+11e00fe0   PEV_ad_set_mode
+11e01040   PEV_ad_in_st
+11e0106c   PEV_ad_in_grp
+11e012b0   PEV_ad_in_4ch
+11e01418   PEV_ad_enable_int
+11e01460   PEV_ad_disable_int
+11e01494   PEV_ad_abz_read
+11e016e8   PEV_abz_write
+11e01734   PEV_abz_set_mode
+11e017a4   PEV_abz_read
+11e017e8   PEV_abz_init_maxcount
+11e01834   PEV_abz_in_pin
+11e01864   PEV_abz_get_resolver_pos
+11e018a4   PEV_abz_get_resolver_err
+11e018e0   PEV_abz_clear_resolver_err
+11e01914   PEV_abz_clear
+11e01960   ADC_start
+11e01980   ADC_set_trigger_offset
+11e019d0   ADC_set_range
+11e01a14   ADC_set_offset
+11e01a40   ADC_set_mode
+11e01b14   ADC_set_edge
+11e01b40   ADC_int_init
+11e01c04   ADC_init
+11e01c58   ADC_in_st
+11e01c74   ADC_in_grp
+11e01e14   ADC_in_4ch
+11e01f90   ADC_get_fpga_ver
+11e01fb0   ADC_cfg_sync_out
+11e01fe0   C6657_timer3_hi_stop
+11e01ff4   C6657_timer3_hi_start
+11e02014   C6657_timer3_hi_init_vector
+11e02038   C6657_timer3_hi_init
+11e020ac   C6657_timer3_hi_enable_int
+11e02104   C6657_timer3_hi_clear_eventflag
+11e02114   C6657_timer2_write
+11e02120   C6657_timer2_stop
+11e02134   C6657_timer2_start
+11e02158   C6657_timer2_read
+11e02168   C6657_timer2_init_vector
+11e021b0   C6657_timer2_init
+11e02224   C6657_timer2_enable_int
+11e02278   C6657_timer2_disable_int
+11e022c0   C6657_timer2_clear_eventflag
+11e022cc   C6657_timer2_clear
+11e022d8   C6657_timer1_write
+11e022e8   C6657_timer1_stop
+11e02300   C6657_timer1_start
+11e02320   C6657_timer1_read
+11e0232c   C6657_timer1_init_vector
+11e02350   C6657_timer1_init
+11e023c4   C6657_timer1_enable_int
+11e02418   C6657_timer1_disable_int
+11e02460   C6657_timer1_clear_eventflag
+11e0246c   C6657_timer1_clear
+11e02478   C6657_timer0_write
+11e02488   C6657_timer0_stop
+11e024a0   C6657_timer0_start
+11e024c0   C6657_timer0_read
+11e024cc   C6657_timer0_init_vector
+11e024f0   C6657_timer0_init
+11e02564   C6657_timer0_enable_int
+11e025b8   C6657_timer0_disable_int
+11e025f8   C6657_timer0_clear_eventflag
+11e0260c   C6657_timer0_clear
+11e02620   EMF_Write_s32
+11e02698   EMF_WriteFlashRom_s32
+11e027a0   EMF_Write2_s32
+11e02838   EMF_Read_s32
+11e028ac   EMF_ReadFpgaBoard_s32
+11e02960   EMF_ReadFlashRom_s32
+11e02a28   EMF_Read3_s32
+11e02a94   EMF_Read2_s32
+11e02b4c   EMF_Initialization_s32
+11e02bac   EMF_EnableIntr_s32
+11e02c74   mwintc_setupApp
+11e02d08   cic0Out2Evnt
+11e02d94   mwintc_setup
+11e02e14   mwintc_setup2
+11e02ee0   mwintc_mapSystemIntrToChannel
+11e02ef8   mwintc_getInterruptStatus
+11e02f28   mwintc_enableSysInterrupt
+11e02f40   mwintc_enableHostInterrupt
+11e02f54   mwintc_disableSysInterrupt
+11e02f6c   mwintc_disableHostInterrupt
+11e02f84   mwintc_clearSysInterrupt
+11e02f98   int_end_nestint
+11e02fe8   int_begin_nestint
+11e03028   IRQ_globalRestore
+11e03030   IRQ_globalEnable
+11e03050   IRQ_globalDisable
+11e03080   CSL2_intcHwControl
+11e033a0   EMF_ErrIntr_vo
+11e03580   GPI_setVector_vo
+11e03654   GPI_int_ack_vo
+11e036a4   GPI_init_vo
+11e036cc   GPI_enable_int_vo
+11e036ec   GPI_disable_int_vo
+11e03720   CSL2_loadResource
+11e03734   CSL2_intcOpen2
+11e038a0   CSL_intcInterruptEnable
+11e038c0   CSL_intcInterruptDisable
+11e038e0   _CSL_intcInterruptClear
+11e038ec   _CSL_intcInterruptSet
+11e038f8   _CSL_intcInterruptRestore
+11e03910   _CSL_intcQueryInterruptStatus
+11e03928   CSL_intcGlobalEnable
+11e03948   _CSL_intcGlobalDisable
+11e03968   _CSL_intcGlobalRestore
+11e03980   CSL_intcGlobalNmiEnable
+11e03994   _CSL_intcGlobalExcepEnable
+11e039a8   _CSL_intcGlobalExtExcepEnable
+11e039bc   _CSL_intcGlobalExcepClear
+11e039e0   mw_setVect
+11e03a00   _CSL2_intcDispatcherDummy
+11f00350   intcObj
+11f00450   gpio_int_map
+11f00490   _mwSinTbl
+11f02498   _stack
+11f03498   __TI_STACK_END
+11f03498   __TI_STATIC_BASE
+11f03498   gateControl_interval
+11f0349c   StrainGaugeRead_interval
+11f034a0   scope_interval
+11f034a4   A_aligned_encoder_count
+11f034a8   hysterisis_limit
+11f034ac   inverter_on
+11f034b0   gateSignalSequence
+11f034b2   virtual_frequency
+11f034b4   i0
+11f034b8   i1
+11f034bc   i2
+11f034c0   i3
+11f034c4   p1_deg
+11f034c8   p2_deg
+11f034cc   p3_deg
+11f034d0   p1_rad
+11f034d4   p2_rad
+11f034d8   p3_rad
+11f034dc   theta_on_deg
+11f034e0   theta_off_deg
+11f034e4   theta_on_rad
+11f034e8   theta_off_rad
+11f034ec   square_peak
+11f034f0   SCOPE_fedIu
+11f034f4   SCOPE_fedIv
+11f034f8   SCOPE_fedIw
+11f034fc   SCOPE_outVu
+11f03500   SCOPE_outVv
+11f03504   SCOPE_outVw
+11f03508   SCOPE_abz
+11f0350c   SCOPE_theta
+11f03510   SCOPE_omega
+11f03514   SCOPE_rpm
+11f03518   SCOPE_strain_avg
+11f0351c   SCOPE_strain_ref
+11f03520   SCOPE_compensation
+11f03524   SCOPE_torque
+11f03528   SCOPE_refIu
+11f0352c   SCOPE_refIv
+11f03530   SCOPE_refIw
+11f03534   Vdc
+11f03538   Idc
+11f0353c   adjustFedIu
+11f03540   hysFLagIu
+11f03544   strain
+11f03548   EMF_ExtWaitErrInfo_u32s
+11f0354c   EMF_ExtWaitErrCnt_u32s
+11f03550   hGpio
+11f03558   strain_offset
+11f0355c   hy_band
+11f03560   current_step
+11f03564   row_avg_record
+11f03568   serial_avg_record
+11f0356c   serial_avg_cal
+11f03570   sum_strain_row
+11f03574   row_avg_cal
+11f03578   lock_avg_record
+11f0357c   abz_prev
+11f03580   rotate_period_count_cal
+11f03584   factor_cal_time
+11f03588   n_com
+11f0358c   n_offset
+11f03590   tmr1regs
+11f03594   tmr2regs
+11f03598   tmr3regs
+11f0359c   mw_gp__CSL_intcCpuIntrTable
+11f035a0   mw_platform_errno
+ffffffff   __TI_pprof_out_hndl
+ffffffff   __TI_prof_data_size
+ffffffff   __TI_prof_data_start
+ffffffff   __binit__
+ffffffff   __c_args__
+ffffffff   binit
+UNDEFED    __TI_INITARRAY_Base
+UNDEFED    __TI_INITARRAY_Limit
+UNDEFED    __TI_TLS_INIT_Base
+UNDEFED    __TI_TLS_INIT_Limit
+
+[319 symbols]

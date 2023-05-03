@@ -1,0 +1,10 @@
+[COMPONENT]
+CONF	"srmcode.bat" "srmcode.cmd" 	# :Tuesday, March 14, 2023 7:32:43 PM
+OBJ	"$(PEOS_PATH)\lib\Main.obj" "$(PEOS_PATH)\lib\mwio4.lib" "$(MATHLIB_PATH)\lib\mathlib.ae66" "$(COMPILER_PATH)/../lib/rts6600_elf.lib" "$(CSL_PATH)/lib/ti.csl.ae66" "$(CSL_PATH)/lib/ti.csl.intc.ae66" 	# :Tuesday, March 14, 2023 7:32:43 PM
+HEADER	"$(PROJECT_PATH)" "$(PEOS_PATH)\inc" "$(COMPILER_PATH)\..\include" "$(CSL_PATH)" "$(MATHLIB_PATH)\inc" "$(MATHLIB_PATH)\packages" "$(CSL_PATH)\..\.." 	# :Tuesday, March 14, 2023 7:32:43 PM
+SRC	"srmcode.c" "KlabIMP.c" "KlabVector.c" 	# :Tuesday, March 14, 2023 7:32:43 PM
+[CONFIGURE]
+AUTO_MAKE	"YES" 	# :Tuesday, March 14, 2023 7:32:43 PM
+STOP_RECONF	"NO" 	# :Tuesday, March 14, 2023 7:32:43 PM
+PEOS_VER	"3_11" 	# :Tuesday, March 14, 2023 7:32:43 PM
+TARGET_TYPE	"c6657" 	# :Tuesday, March 14, 2023 7:32:43 PM

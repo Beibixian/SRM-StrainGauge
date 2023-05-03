@@ -1,0 +1,67 @@
+A_aligned_encoder_count 11f034a4 SHORT 4
+abz_prev 11f0357c INT 3
+adc_offset_BND0 c0f70d8 FLOAT 20 8
+adc_offset_BND1 c0f70a8 FLOAT 20 12
+adc_range_BND0 c0f70f8 FLOAT 20 8
+adjustFedIu 11f0353c FLOAT 1
+compensation c0f4000 FLOAT 20 1024
+current_step 11f03560 FLOAT 1
+data c0fb180 FLOAT 20 8
+factor_cal_time 11f03584 INT 3
+gateControl_interval 11f03498 FLOAT 1
+gateSignalSequence 11f034b0 SHORT 4
+hy_band 11f0355c FLOAT 1
+hysFLagIu 11f03540 SHORT 4
+hysterisis_limit 11f034a8 FLOAT 1
+i0 11f034b4 FLOAT 1
+i1 11f034b8 FLOAT 1
+i2 11f034bc FLOAT 1
+i3 11f034c0 FLOAT 1
+Idc 11f03538 FLOAT 1
+inverter_on 11f034ac INT 3
+lock_avg_record 11f03578 INT 3
+n_com 11f03588 INT 3
+n_offset 11f0358c INT 3
+p1_deg 11f034c4 FLOAT 1
+p1_rad 11f034d0 FLOAT 1
+p2_deg 11f034c8 FLOAT 1
+p2_rad 11f034d4 FLOAT 1
+p3_deg 11f034cc FLOAT 1
+p3_rad 11f034d8 FLOAT 1
+rotate_period_count_cal 11f03580 INT 3
+row_avg_cal 11f03574 INT 3
+row_avg_record 11f03564 INT 3
+SCOPE_abz 11f03508 FLOAT 1
+SCOPE_compensation 11f03520 FLOAT 1
+SCOPE_fedIu 11f034f0 FLOAT 1
+SCOPE_fedIv 11f034f4 FLOAT 1
+SCOPE_fedIw 11f034f8 FLOAT 1
+scope_interval 11f034a0 FLOAT 1
+SCOPE_omega 11f03510 FLOAT 1
+SCOPE_outVu 11f034fc FLOAT 1
+SCOPE_outVv 11f03500 FLOAT 1
+SCOPE_outVw 11f03504 FLOAT 1
+SCOPE_refIu 11f03528 FLOAT 1
+SCOPE_refIv 11f0352c FLOAT 1
+SCOPE_refIw 11f03530 FLOAT 1
+SCOPE_rpm 11f03514 FLOAT 1
+SCOPE_strain_avg 11f03518 FLOAT 1
+SCOPE_strain_ref 11f0351c FLOAT 1
+SCOPE_theta 11f0350c FLOAT 1
+SCOPE_torque 11f03524 FLOAT 1
+serial_avg_cal 11f0356c INT 3
+serial_avg_record 11f03568 INT 3
+square_peak 11f034ec FLOAT 1
+strain 11f03544 FLOAT 1
+strain_avg c0f5000 FLOAT 20 1024
+strain_offset 11f03558 FLOAT 1
+strain_record c018000 FLOAT 20 225280
+strain_ref c0f6000 FLOAT 20 1024
+StrainGaugeRead_interval 11f0349c FLOAT 1
+sum_strain_row 11f03570 FLOAT 1
+theta_off_deg 11f034e0 FLOAT 1
+theta_off_rad 11f034e8 FLOAT 1
+theta_on_deg 11f034dc FLOAT 1
+theta_on_rad 11f034e4 FLOAT 1
+Vdc 11f03534 FLOAT 1
+virtual_frequency 11f034b2 SHORT 4
