@@ -1085,12 +1085,7 @@ FLOAT32 hysterisis_limit;
 INT inverter_on;
 INT16 gateSignalSequence;
 INT16 virtual_frequency;
-// INT32 row_avg_record = 0;	 // row number used in averaging record.
-// INT32 serial_avg_record = 0; // serial number used in averaing record.
-// INT32 serial_avg_cal = 0;	 // serial number used in averaing calculation.
-// FLOAT32 sum_strain_row = 0;	 // sum of a row of SG record.
-// INT32 row_avg_cal = 0;
-// INT32 lock_avg_record = 0;
+
 INT32 abz_prev = 0;
 INT32 rotate_period_count_cal = 0; // Used in compensation calculation
 INT32 factor_cal_time = 1;		   // Used in compensation calculation
