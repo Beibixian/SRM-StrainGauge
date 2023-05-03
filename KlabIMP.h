@@ -53,7 +53,7 @@ extern void KLAB_curCtrl_output_outVol(DISCRETE_STATE_SPACE *ssFunc, ELECTRIC_VA
 extern void proposed_phase_deg2rad(FLOAT32 *p1_deg, FLOAT32 *p2_deg, FLOAT32 *p3_deg, FLOAT32 *p1_rad, FLOAT32 *p2_rad, FLOAT32 *p3_rad);
 extern void generate_proposed_reference(ELECTRIC_VALUE *refCurrent, FLOAT32 *i0, FLOAT32 *i1, FLOAT32 *i2, FLOAT32 *i3, FLOAT32 *p1, FLOAT32 *p2, FLOAT32 *p3, ROTATE_VALUE rotateValue);
 extern void generate_gateSignalSequence_Hysterisis(ELECTRIC_VALUE *refCurrent, ELECTRIC_VALUE *fedCurrent, FLOAT32 hysterisis_limit, INT16 *gateSignalSequence, INT16 *hysFLogIu);
-extern void generate_square_reference(ELECTRIC_VALUE *refCurrent, FLOAT32 theta_on, FLOAT32 theta_off, FLOAT32 peak, ROTATE_VALUE rotateValue, FLOAT32 *compensation);
+extern void generate_square_reference(ELECTRIC_VALUE *refCurrent, FLOAT32 theta_on, FLOAT32 theta_off, FLOAT32 peak, FLOAT32 MAX_PHASE_CURRENT, ROTATE_VALUE rotateValue, FLOAT32 *compensation);
 extern void square_phase_deg2rad(FLOAT32 *theta_on_deg, FLOAT32 *theta_off_deg, FLOAT32 *theta_on_rad, FLOAT32 *theta_off_rad);
 
 #endif /* KLAB_IMP_h_ */

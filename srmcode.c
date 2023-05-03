@@ -9,8 +9,8 @@
  * All the global variables are named in lower camel case: <value purpose><Physical Quantity>
  * For example: refCurrent, <reference><Current>
  * @author Shou Qiu -> Xiang
- * @version 1.0
- * @date 2023-04-18
+ * @version 2.0
+ * @date 2023-05-03
  *
  * @copyright Copyright (c) 2022 Tokyo Institute of Technology, Chiba and Kiyota Lab
  */
@@ -29,7 +29,7 @@
 #define DIR 0				   // Rotation direction 1 = FWD, 0 = REV
 #define ENCODER_MAX_COUNT 1023 // the reset threshold of encouder count
 
-#define avg_max_count 220 // the count of averaging method
+INT16 avg_max_count = 500; // the count of averaging method
 
 // FLOAT32 adc_range_BND0[8] = {31.25, 31.25, 31.25, 31.25, 312.5, 312.5, 312.5, 0};						 /** For MWINV-1044-SiC, last 3 values are for LEM HO50-S */
 // FLOAT32 adc_offset_BND0[8] = {0.07, 0.02, 0.105, 0.0, -156.9, -157.4, -157.3, 0.0};						 /** For MWINV-1044-SiC, Ser.No. xx-0022.(0.0 means not tested), last 3 values are for LEM HO50-S*/
@@ -40,8 +40,9 @@ FLOAT32 adc_offset_BND0[8] = {0.07, 0.02, 0.105, 0.0, -156.9, -157.4, -157.3, 0.
 FLOAT32 adc_range_BND1[12] = {50.0, 400.0, 250.0, 250.0, 50.0, 312.5, 312.5, 312.5, 0.0, 0.0, 0.0, 0.0}; /** For MWINV-9R122C, last 3 values are for LEM HO50-S */
 FLOAT32 adc_offset_BND1[12] = {0.0, 0.0, 0.34, 0.58, 0.0, -156.9, -157.4, -157.3, 0.0, 0.0, 0.0, 0.0};	 /** For MWINV-9R122C, Ser.No. xx-0022.(0.0 means not tested), last 3 values are for LEM HO50-S*/
 
-FLOAT32 strain_record[(ENCODER_MAX_COUNT + 1) * avg_max_count] = {0}; // Record data of SG output and use it to caculate average.
-FLOAT32 strain_avg[ENCODER_MAX_COUNT + 1] = {0};					  // Average data of SG output.
+// FLOAT32 strain_record[(ENCODER_MAX_COUNT + 1) * avg_max_count] = {0}; // Record data of SG output and use it to calculate average.
+FLOAT32 avg_record_times[ENCODER_MAX_COUNT + 1] = {0}; // Average times (real-time).
+FLOAT32 strain_avg[ENCODER_MAX_COUNT + 1] = {0};	   // Average data of SG output.
 FLOAT32 strain_ref[ENCODER_MAX_COUNT + 1] = {
 	0.089582141,
 	0.099175219,
@@ -1067,16 +1068,14 @@ FLOAT32 strain_ref[ENCODER_MAX_COUNT + 1] = {
 	0.082370615,
 	0.087096213,
 	0.087679615,
-};												   // reference of SG output.
-FLOAT32 compensation[ENCODER_MAX_COUNT + 1] = {0}; // compensation of current reference
-FLOAT32 strain_offset = 0;						   // offset of SG output.
+};													  // reference of SG output.
+FLOAT32 strain_avg_temp[ENCODER_MAX_COUNT + 1] = {0}; // Record average data of SG output.
+FLOAT32 compensation[ENCODER_MAX_COUNT + 1] = {0};	  // compensation of current reference
+FLOAT32 strain_offset = 0;							  // offset of SG output.
 FLOAT32 hy_band = 0.1;
-FLOAT32 current_step = 0.2;
+FLOAT32 current_step = 0; // 0.2;
 
 FLOAT32 data[8];
-// volatile FLOAT32 refId, refIq, refI0;
-// volatile FLOAT32 refI0ac, refPhi;
-// volatile FLOAT32 IMPOmega;
 
 FLOAT32 gateControl_interval;
 FLOAT32 StrainGaugeRead_interval;
@@ -1086,21 +1085,21 @@ FLOAT32 hysterisis_limit;
 INT inverter_on;
 INT16 gateSignalSequence;
 INT16 virtual_frequency;
-INT32 row_avg_record = 0;	 // row number used in averaging record.
-INT32 serial_avg_record = 0; // serial number used in averaing record.
-INT32 serial_avg_cal = 0;	 // serial number used in averaing caculation.
-FLOAT32 sum_strain_row = 0;	 // sum of a row of SG record.
-INT32 row_avg_cal = 0;
-INT32 lock_avg_record = 0;
+// INT32 row_avg_record = 0;	 // row number used in averaging record.
+// INT32 serial_avg_record = 0; // serial number used in averaing record.
+// INT32 serial_avg_cal = 0;	 // serial number used in averaing calculation.
+// FLOAT32 sum_strain_row = 0;	 // sum of a row of SG record.
+// INT32 row_avg_cal = 0;
+// INT32 lock_avg_record = 0;
 INT32 abz_prev = 0;
-INT32 rotate_period_count_cal = 0;
-INT32 factor_cal_time = 3;
-INT32 n_com = 0;
-INT32 n_offset = 0;
+INT32 rotate_period_count_cal = 0; // Used in compensation calculation
+INT32 factor_cal_time = 1;		   // Used in compensation calculation
+INT32 n_com = 0;				   // Used in compensation calculation
+INT32 n_offset = 0;				   // Used in offset calculation
 
 // FLOAT32 i0 = 0, i1 = 0, i2 = 0, i3 = 0, p1 = 0, p2 = 0, p3 = 0;
 FLOAT32 i0, i1, i2, i3, p1_deg, p2_deg, p3_deg, p1_rad, p2_rad, p3_rad;
-FLOAT32 theta_on_deg, theta_off_deg, theta_on_rad, theta_off_rad, square_peak;
+FLOAT32 theta_on_deg, theta_off_deg, theta_on_rad, theta_off_rad, square_peak, MAX_PHASE_CURRENT;
 ROTATE_VALUE rotateValue;						   /** A data structure that contains all needed rotation-related data */
 ELECTRIC_VALUE refCurrent, fedCurrent, outVoltage; /** Electric values on uvw&dq0, ref: reference, fed: feedback(measured), out: output */
 // DISCRETE_STATE_SPACE ssFunction;				   /** State-space function of IMP controller */
@@ -1140,9 +1139,6 @@ FLOAT32 strain;
 
 void scope(void)
 {
-	// SCOPE_fedId = fedCurrent.d;
-	// SCOPE_fedIq = fedCurrent.q;
-	// SCOPE_fedI0 = fedCurrent.zero;
 
 	SCOPE_fedIu = fedCurrent.u;
 	SCOPE_fedIv = fedCurrent.v;
@@ -1171,7 +1167,6 @@ void scope(void)
 // interruput handler for the interrupt triggered by timer0
 interrupt void gateControl(void)
 {
-	// C6657_timer0_clear_eventflag();
 	int3_ack();
 
 	// /** Read the value from current sensor on MWINV-2022B. (Defult, Please comment out one of these current measurement code) */
@@ -1185,15 +1180,12 @@ interrupt void gateControl(void)
 	// /** Read electrical angle of the rotor. */
 	rotateValue.abz = (PEV_abz_read(PEV_BDN) + ENCODER_MAX_COUNT + 1 - A_aligned_encoder_count) % (ENCODER_MAX_COUNT + 1); // compensate abz-count to A-aligned position to count:zero
 	rotateValue.theta = PI_2 * rotateValue.abz / ENCODER_MAX_COUNT;														   // convert abz-count to electric angle in radians
-	// if(rotateValue.theta > PI_2){
-	// 	rotateValue.theta -= PI_2;
-	// }
-	// rotateValue.theta += virtual_frequency * 1/FS * PI_2;
+
 	proposed_phase_deg2rad(&p1_deg, &p2_deg, &p3_deg, &p1_rad, &p2_rad, &p3_rad);
 	square_phase_deg2rad(&theta_on_deg, &theta_off_deg, &theta_on_rad, &theta_off_rad);
 	// generate_proposed_reference(&refCurrent,&i0,&i1,&i2,&i3,&p1_rad,&p2_rad,&p3_rad,rotateValue);
 
-	generate_square_reference(&refCurrent, theta_on_rad, theta_off_rad, square_peak, rotateValue, compensation); // 在这里加个补偿参数,注意数组变量
+	generate_square_reference(&refCurrent, theta_on_rad, theta_off_rad, square_peak, MAX_PHASE_CURRENT, rotateValue, compensation); // 在这里加个补偿参数,注意数组变量
 	generate_gateSignalSequence_Hysterisis(&refCurrent, &fedCurrent, hysterisis_limit, &gateSignalSequence, &hysFLagIu);
 	if (inverter_on == 1)
 	{
@@ -1216,32 +1208,23 @@ interrupt void StrainGaugeRead(void)
 	{
 		strain = data_ADC[0];
 	}
-	serial_avg_record = rotateValue.abz + row_avg_record * ENCODER_MAX_COUNT;
-	strain_record[serial_avg_record] = strain;
-	if (rotateValue.abz == ENCODER_MAX_COUNT)
-	{
-		if (lock_avg_record == 0)
-		{
-			row_avg_record = row_avg_record + 1;
-			lock_avg_record = 1;
-		}
 
-		if (row_avg_record == avg_max_count)
+	if (abz_prev != rotateValue.abz)
+	{
+		avg_record_times[rotateValue.abz]++;
+		strain_avg_temp[rotateValue.abz] = strain_avg_temp[rotateValue.abz] + (strain - strain_avg_temp[rotateValue.abz]) / avg_record_times[rotateValue.abz];
+	}
+	if (avg_record_times[rotateValue.abz] == avg_max_count + 1)
+	{
+		INT16 i;
+		for (i = 0; i < ENCODER_MAX_COUNT + 1; i++)
 		{
-			row_avg_record = 0;
+			strain_avg[i] = strain_avg_temp[i];
+			strain_avg_temp[i] = 0;
+			avg_record_times[i] = 0;
 		}
 	}
-	if (rotateValue.abz != ENCODER_MAX_COUNT)
-	{
-		lock_avg_record = 0;
-	}
-	for (row_avg_cal = 0; row_avg_cal < avg_max_count; row_avg_cal++)
-	{
-		serial_avg_cal = rotateValue.abz + row_avg_cal * ENCODER_MAX_COUNT;
-		sum_strain_row = sum_strain_row + strain_record[serial_avg_cal];
-	}
-	strain_avg[rotateValue.abz] = sum_strain_row / avg_max_count;
-	sum_strain_row = 0;
+
 	strain_offset = 0;
 	// generate_offset(); 使用abz800-1000范围内的sg输出值
 	for (n_offset = 801; n_offset < 1001; n_offset++)
@@ -1287,19 +1270,11 @@ interrupt void scope_interrupt(void)
 	scope();
 }
 
-// interruput handler for the interrupt triggered by z-signal of ABZ
-// interrupt void speed(void)
-// {
-// 	int2_ack();
-// 	INT32 timerCount = PEV_capture_read_cnt(PEV_BDN);
-// 	KLAB_speedCalc_update_speed(&rotateValue, timerCount);
-// 	scope();
-// }
-
 int MW_main(void)
 {
 	// rotateValue.theta = 0;
 	i0 = i1 = i2 = i3 = p1_deg = p2_deg = p3_deg = theta_on_deg = theta_off_deg = square_peak = 0;
+	MAX_PHASE_CURRENT = 13;
 	inverter_on = 0;
 	gateSignalSequence = 4095;
 

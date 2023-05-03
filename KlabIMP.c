@@ -298,7 +298,7 @@ FLOAT32 generate_phase_square_reference(FLOAT32 theta_on, FLOAT32 theta_off, FLO
   return refCurrent;
 }
 
-void generate_square_reference(ELECTRIC_VALUE *refCurrent, FLOAT32 theta_on, FLOAT32 theta_off, FLOAT32 peak, ROTATE_VALUE rotateValue, FLOAT32 *compensation)
+void generate_square_reference(ELECTRIC_VALUE *refCurrent, FLOAT32 theta_on, FLOAT32 theta_off, FLOAT32 peak, FLOAT32 MAX_PHASE_CURRENT, ROTATE_VALUE rotateValue, FLOAT32 *compensation)
 {
   // refCurrent->u = generate_phase_square_reference(theta_on, theta_off, peak, rotateValue.theta);
   // refCurrent->v = 0;
@@ -312,7 +312,7 @@ void generate_square_reference(ELECTRIC_VALUE *refCurrent, FLOAT32 theta_on, FLO
   refCurrent->v = generate_phase_square_reference(theta_on, theta_off, peak, rotateValue.theta - PI_2OVER3) + compensation[abz_compensation];
   refCurrent->w = 0;
   // refCurrent->w = generate_phase_square_reference(theta_on, theta_off, peak, rotateValue.theta - PI_4OVER3);
-  FLOAT32 MAX_PHASE_CURRENT = 15;
+
   if (refCurrent->u < 0)
   {
     refCurrent->u = 0;
