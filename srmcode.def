@@ -8,7 +8,7 @@ avg_max_count 11f0355c SHORT 4
 avg_record_times c018000 FLOAT 20 1024
 compensation c019000 FLOAT 20 1024
 current_step 11f03568 FLOAT 1
-data c0210a0 FLOAT 20 8
+data c021080 FLOAT 20 8
 factor_cal_time 11f03574 INT 3
 gateControl_interval 11f03498 FLOAT 1
 gateSignalSequence 11f034b0 SHORT 4

@@ -300,17 +300,20 @@ FLOAT32 generate_phase_square_reference(FLOAT32 theta_on, FLOAT32 theta_off, FLO
 
 void generate_square_reference(ELECTRIC_VALUE *refCurrent, FLOAT32 theta_on, FLOAT32 theta_off, FLOAT32 peak, FLOAT32 MAX_PHASE_CURRENT, ROTATE_VALUE rotateValue, FLOAT32 *compensation)
 {
-  // refCurrent->u = generate_phase_square_reference(theta_on, theta_off, peak, rotateValue.theta);
-  // refCurrent->v = 0;
+  /***------compensate delay between currrent and sg_output------***/
   INT32 abz_compensation = 0;
   abz_compensation = rotateValue.abz + 30;
   if (abz_compensation > 1023)
   {
     (abz_compensation) = (abz_compensation)-1023;
   }
+  /***-----------------------------------------------------------***/
+
   refCurrent->u = 0;
-  refCurrent->v = generate_phase_square_reference(theta_on, theta_off, peak, rotateValue.theta - PI_2OVER3) + compensation[abz_compensation];
+  refCurrent->v = generate_phase_square_reference(theta_on, theta_off, peak, rotateValue.theta - PI_2OVER3) + compensation[rotateValue.abz]; // + compensation[abz_compensation]
   refCurrent->w = 0;
+  // refCurrent->u = generate_phase_square_reference(theta_on, theta_off, peak, rotateValue.theta);
+  // refCurrent->v = generate_phase_square_reference(theta_on, theta_off, peak, rotateValue.theta - PI_2OVER3);
   // refCurrent->w = generate_phase_square_reference(theta_on, theta_off, peak, rotateValue.theta - PI_4OVER3);
 
   if (refCurrent->u < 0)

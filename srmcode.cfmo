@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotorData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <FormatVersion>1</FormatVersion>
+  <Sampling>500</Sampling>
+  <RecordLength>4000</RecordLength>
+  <DispIDeal>false</DispIDeal>
+  <IdealColorIndex>8</IdealColorIndex>
+  <IdealValDivX>1</IdealValDivX>
+  <IdealValDivY>1</IdealValDivY>
+  <IdealSelEqu>true</IdealSelEqu>
+  <IdealEquation1_A />
+  <IdealEquation1_B />
+  <IdealCsvFilePath />
+  <DispIDeal2>false</DispIDeal2>
+  <IdealColorIndex2>1</IdealColorIndex2>
+  <IdealValDivX2>1</IdealValDivX2>
+  <IdealValDivY2>1</IdealValDivY2>
+  <IdealSelEqu2>true</IdealSelEqu2>
+  <IdealEquation2_A />
+  <IdealEquation2_B />
+  <IdealCsvFilePath2 />
+  <DispMeasure>false</DispMeasure>
+  <MeasureColorIndex>13</MeasureColorIndex>
+  <MeasureValDivX>1</MeasureValDivX>
+  <MeasureValDivY>1</MeasureValDivY>
+  <MeasureEquationX />
+  <MeasureEquationY />
+  <DispMeasure2>false</DispMeasure2>
+  <MeasureColorIndex2>18</MeasureColorIndex2>
+  <MeasureValDivX2>1</MeasureValDivX2>
+  <MeasureValDivY2>1</MeasureValDivY2>
+  <MeasureEquationX2 />
+  <MeasureEquationY2 />
+  <LocusVari1_8Prm>
+    <string>A_aligned_encoder_count</string>
+    <string>A_aligned_encoder_count</string>
+    <string>A_aligned_encoder_count</string>
+    <string>A_aligned_encoder_count</string>
+    <string>A_aligned_encoder_count</string>
+    <string>A_aligned_encoder_count</string>
+    <string>A_aligned_encoder_count</string>
+    <string>A_aligned_encoder_count</string>
+  </LocusVari1_8Prm>
+  <DispVectorName>true</DispVectorName>
+  <DispDqV>false</DispDqV>
+  <DispDqA>false</DispDqA>
+  <DispDqmVrmsRpm>false</DispDqmVrmsRpm>
+  <DqVColorIndex>16</DqVColorIndex>
+  <DqAColorIndex>4</DqAColorIndex>
+  <DqmVrmsRpmColorIndex>17</DqmVrmsRpmColorIndex>
+  <DqVDivX>1</DqVDivX>
+  <DqVDivY>1</DqVDivY>
+  <DqADivX>1</DqADivX>
+  <DqADivY>1</DqADivY>
+  <DqmVrmsRpmDivX>1</DqmVrmsRpmDivX>
+  <DqmVrmsRpmDivY>1</DqmVrmsRpmDivY>
+  <VariPrmId_A>A_aligned_encoder_count</VariPrmId_A>
+  <VariPrmIq_A>A_aligned_encoder_count</VariPrmIq_A>
+  <VariPrmOmega_RadSec>A_aligned_encoder_count</VariPrmOmega_RadSec>
+  <ConstPrmPhim_mVrmsRpm>0</ConstPrmPhim_mVrmsRpm>
+  <ConstPrmLd_uH>0</ConstPrmLd_uH>
+  <ConstPrmLq_uH>0</ConstPrmLq_uH>
+  <ConstPrmR_mOhm>0</ConstPrmR_mOhm>
+  <MeasureEquationPhim_mVrmsRpm />
+  <MeasureEquationLd_uH />
+  <MeasureEquationLq_uH />
+  <MeasureEquationR_mOhm />
+  <BackColorIndex>7</BackColorIndex>
+  <FrameColorIndex>19</FrameColorIndex>
+  <PixcelWidth>1</PixcelWidth>
+  <Smooth>true</Smooth>
+</MotorData>

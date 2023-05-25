@@ -15,9 +15,11 @@
  * @copyright Copyright (c) 2022 Tokyo Institute of Technology, Chiba and Kiyota Lab
  */
 
-#include <math.h>		/** Standard Math Library */
-#include <mwio4.h>		/** IO Library for Myway PE-Xpert4 */
-#include <string.h>		/** To use memset() and memcpy() */
+#include <math.h>	/** Standard Math Library */
+#include <mwio4.h>	/** IO Library for Myway PE-Xpert4 */
+#include <string.h> /** To use memset() and memcpy() */
+#include <stdio.h>
+#include <complex.h>
 #include "KlabVector.h" /** Used for uvw2dq0 coordinate conversion and speed calculation */
 #include "KlabIMP.h"	/** Internal model principle current controller */
 
@@ -28,6 +30,8 @@
 #define DCVOLTAGE 50		   // DC Voltage of the inverter supply
 #define DIR 0				   // Rotation direction 1 = FWD, 0 = REV
 #define ENCODER_MAX_COUNT 1023 // the reset threshold of encouder count
+#define PI 3.14159265358
+// #define avg_max_count 50 // the count of averaging method
 
 INT16 avg_max_count = 500; // the count of averaging method
 
@@ -1155,7 +1159,7 @@ void scope(void)
 	SCOPE_refIw = refCurrent.w;
 
 	SCOPE_strain_avg = strain_avg[rotateValue.abz] - strain_offset;
-	SCOPE_strain_ref = strain_ref[rotateValue.abz];
+	SCOPE_strain_ref = strain_ref[rotateValue.abz] / 4;
 	SCOPE_compensation = compensation[rotateValue.abz];
 }
 
@@ -1209,7 +1213,7 @@ interrupt void StrainGaugeRead(void)
 		avg_record_times[rotateValue.abz]++;
 		strain_avg_temp[rotateValue.abz] = strain_avg_temp[rotateValue.abz] + (strain - strain_avg_temp[rotateValue.abz]) / avg_record_times[rotateValue.abz];
 	}
-	if (avg_record_times[rotateValue.abz] == avg_max_count + 1)
+	if (avg_record_times[rotateValue.abz] > avg_max_count)
 	{
 		INT16 i;
 		for (i = 0; i < ENCODER_MAX_COUNT + 1; i++)
@@ -1221,7 +1225,7 @@ interrupt void StrainGaugeRead(void)
 	}
 
 	strain_offset = 0;
-	// generate_offset(); 使用abz800-1000范围内的sg输出值
+	// generate_offset(); 使用abz800-1000范围内的sg输出值来计算当前offset
 	for (n_offset = 801; n_offset < 1001; n_offset++)
 	{
 		strain_offset = strain_offset + strain_avg[n_offset];

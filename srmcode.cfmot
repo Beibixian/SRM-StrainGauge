@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PulsationData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <FormatVersion>1</FormatVersion>
+  <ConstPrmIdeal>0</ConstPrmIdeal>
+  <IdealColorIndex>8</IdealColorIndex>
+  <MeasuredColorIndex>13</MeasuredColorIndex>
+  <ValDiv>10</ValDiv>
+  <Torqu_NmCH>0</Torqu_NmCH>
+  <Angle_DegCH>0</Angle_DegCH>
+  <StrRecord />
+  <StrSampling />
+  <BackColorIndex>4</BackColorIndex>
+  <FrameColorIndex>31</FrameColorIndex>
+  <CircleColorIndex>7</CircleColorIndex>
+  <PixcelWidth>1</PixcelWidth>
+  <Smooth>true</Smooth>
+  <DispIdeal>true</DispIdeal>
+  <DispMeasure>true</DispMeasure>
+</PulsationData>
