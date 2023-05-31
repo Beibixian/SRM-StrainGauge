@@ -30,10 +30,13 @@
 #define DCVOLTAGE 50		   // DC Voltage of the inverter supply
 #define DIR 0				   // Rotation direction 1 = FWD, 0 = REV
 #define ENCODER_MAX_COUNT 1023 // the reset threshold of encouder count
-#define PI 3.14159265358
+#define PI 3.14159265358	   // PI
+#define N_FFT 128			   // FFTデータ個数
 // #define avg_max_count 50 // the count of averaging method
 
-INT16 avg_max_count = 500; // the count of averaging method
+FLOAT32 RPM_SET = 200;		  // rpm set by IPM 200/15=13.333hz
+INT16 avg_max_count = 200;	  // the count of averaging method
+FLOAT32 value_cutoff = 0.013; // the count of averaging method
 
 // FLOAT32 adc_range_BND0[8] = {31.25, 31.25, 31.25, 31.25, 312.5, 312.5, 312.5, 0};						 /** For MWINV-1044-SiC, last 3 values are for LEM HO50-S */
 // FLOAT32 adc_offset_BND0[8] = {0.07, 0.02, 0.105, 0.0, -156.9, -157.4, -157.3, 0.0};						 /** For MWINV-1044-SiC, Ser.No. xx-0022.(0.0 means not tested), last 3 values are for LEM HO50-S*/
@@ -1072,10 +1075,11 @@ FLOAT32 strain_ref[ENCODER_MAX_COUNT + 1] = {
 	0.082370615,
 	0.087096213,
 	0.087679615,
-};													  // reference of SG output.
-FLOAT32 strain_avg_temp[ENCODER_MAX_COUNT + 1] = {0}; // Record average data of SG output.
-FLOAT32 compensation[ENCODER_MAX_COUNT + 1] = {0};	  // compensation of current reference
-FLOAT32 strain_offset = 0;							  // offset of SG output.
+};													   // reference of SG output.
+FLOAT32 strain_avg_temp[ENCODER_MAX_COUNT + 1] = {0};  // Record average data of SG output.
+FLOAT32 strain_avg_ffted[ENCODER_MAX_COUNT + 1] = {0}; // SG value after phase compensation.
+FLOAT32 compensation[ENCODER_MAX_COUNT + 1] = {0};	   // compensation of current reference
+FLOAT32 strain_offset = 0;							   // offset of SG output.
 FLOAT32 hy_band = 0.1;
 FLOAT32 current_step = 0; // 0.2;
 
@@ -1127,6 +1131,9 @@ FLOAT32 SCOPE_abz, SCOPE_theta, SCOPE_omega, SCOPE_rpm;
 FLOAT32 SCOPE_strain_avg;
 FLOAT32 SCOPE_strain_ref;
 FLOAT32 SCOPE_compensation;
+FLOAT32 SCOPE_phase_fft;
+FLOAT32 SCOPE_magnitude_fft;
+FLOAT32 SCOPE_strain_avg_ffted;
 // FLOAT32 SCOPE_refI0;
 FLOAT32 SCOPE_torque;
 FLOAT32 SCOPE_refIu, SCOPE_refIv, SCOPE_refIw;
@@ -1135,6 +1142,19 @@ FLOAT32 Idc;
 FLOAT32 adjustFedIu;
 INT16 hysFLagIu;
 FLOAT32 strain;
+// INT16 n_fft, k_fft;
+INT16 i_fft;
+FLOAT32 R[N_FFT], phase[N_FFT], magnitude[N_FFT];
+FLOAT32 x_fft[N_FFT], y_fft[N_FFT], a_fft[N_FFT], b_fft[N_FFT];						// 离散傅里叶变换实部虚部
+FLOAT32 a_fft_new[N_FFT], b_fft_new[N_FFT], x_fft_new[N_FFT], y_fft_new[N_FFT];		// 补偿后的离散傅里叶变换实部虚部
+FLOAT32 a_fft_neww[N_FFT], b_fft_neww[N_FFT], x_fft_neww[N_FFT], y_fft_neww[N_FFT]; // 补偿后的离散傅里叶变换实部虚部
+double complex Z;
+// typedef struct
+// {
+// 	FLOAT32 r;
+// 	FLOAT32 i;
+// } complex_define;
+// complex_define x[N_FFT], X_FFT;
 
 void scope(void)
 {
@@ -1161,6 +1181,9 @@ void scope(void)
 	SCOPE_strain_avg = strain_avg[rotateValue.abz] - strain_offset;
 	SCOPE_strain_ref = strain_ref[rotateValue.abz] / 4;
 	SCOPE_compensation = compensation[rotateValue.abz];
+	SCOPE_phase_fft = phase[rotateValue.abz];
+	SCOPE_magnitude_fft = magnitude[rotateValue.abz];
+	SCOPE_strain_avg_ffted = strain_avg_ffted[rotateValue.abz];
 }
 
 // interruput handler for the interrupt triggered by timer0
@@ -1196,6 +1219,64 @@ interrupt void gateControl(void)
 		PEV_inverter_control_gate(PEV_BDN, gateSignalSequence);
 	}
 	scope();
+}
+
+/* 离散傅里叶变换及逆变换
+	x-存放要变换数据的实部
+	y-存放要变换数据的虚部
+	a-存放变换结果的实部
+	b-存放变换结果的虚部
+	n-数据长度N
+	sign-为1时执行DFT，为-1时执行IDFT
+*/
+void dft(FLOAT32 *x, FLOAT32 *y, FLOAT32 *a, FLOAT32 *b, INT16 n)
+{
+	INT16 i, k;
+	i = k = 0;
+	FLOAT32 c, d, q, w, s;
+	c = d = q = w = s = 0;
+	q = 6.28318530718 / n;
+	for (k = 0; k < n; k++) // 这行n改为12
+	{
+		w = k * q;
+		a[k] = b[k] = 0.0;
+		for (i = 0; i < n; i++)
+		{
+			d = i * w;
+			c = cos(d);
+			s = sin(d);
+			a[k] += c * x[i] + s * y[i];
+			b[k] += c * y[i] - s * x[i];
+		}
+	}
+}
+
+void idft(FLOAT32 *x, FLOAT32 *y, FLOAT32 *a, FLOAT32 *b, INT16 n)
+{
+	INT16 i, k;
+	i = k = 0;
+	FLOAT32 c, d, q, w, s;
+	c = d = q = w = s = 0;
+	q = 6.28318530718 / n;
+	for (k = 0; k < n; k++) // 这行n改为12
+	{
+		w = k * q;
+		a[k] = b[k] = 0.0;
+		for (i = 0; i < n; i++)
+		{
+			d = i * w;
+			c = cos(d);
+			s = sin(d) * (-1);
+			a[k] += c * x[i] + s * y[i];
+			b[k] += c * y[i] - s * x[i];
+		}
+	}
+	c = 1.0 / n;
+	for (k = 0; k < n; k++) // 这行n改为12
+	{
+		a[k] = c * a[k];
+		b[k] = c * b[k];
+	}
 }
 
 // StrainGaugeRead interruput handler for the interrupt triggered by timer1
@@ -1236,6 +1317,45 @@ interrupt void StrainGaugeRead(void)
 		rotate_period_count_cal++;
 		if (rotate_period_count_cal > avg_max_count * factor_cal_time)
 		{
+			// // FFT function()
+			// for (i_fft = 0; i_fft < N_FFT; i_fft++)
+			// {
+			// 	x_fft[i_fft] = strain_ref[i_fft * 1024 / N_FFT];
+			// 	// x_fft[i_fft] = strain_avg[i_fft * 1024 / N_FFT] - strain_offset;
+			// 	y_fft[i_fft] = 0;
+			// }
+			// dft(x_fft, y_fft, a_fft, b_fft, N_FFT); // DFT变换
+			// for (i_fft = 0; i_fft < N_FFT; i_fft++)
+			// {
+			// 	Z = a_fft[i_fft] + I * b_fft[i_fft];
+			// 	phase[i_fft] = carg(Z);		// 计算相位
+			// 	magnitude[i_fft] = cabs(Z); // 计算幅度
+			// 	// (代办)phase_compensation();//利用hammer test数据补偿相位
+			// 	// a_fft_new[i_fft] = magnitude[i_fft] * cos(phase[i_fft]);
+			// 	// b_fft_new[i_fft] = magnitude[i_fft] * sin(phase[i_fft]);
+			// 	// phase[i_fft] = phase[i_fft] - fmod(0.001419 * (double)i_fft * RPM_SET / 5 + 0.04958, 2 * PI);
+			// 	phase[i_fft] = phase[i_fft] - 0.001419 * (double)i_fft * RPM_SET / 5 - 0.04958; // 补偿相位
+			// 	a_fft_neww[i_fft] = magnitude[i_fft] * cos(phase[i_fft]);
+			// 	b_fft_neww[i_fft] = magnitude[i_fft] * sin(phase[i_fft]);
+			// }
+
+			// // idft(a_fft_new, b_fft_new, x_fft_new, y_fft_new, N_FFT);	 // IDFT变换 其中y_fft_new应为0
+			// idft(a_fft_neww, b_fft_neww, x_fft_neww, y_fft_neww, N_FFT); // IDFT变换 其中y_fft_new应为0
+
+			// // interpolation();在N_FFT中插值,扩展为1024长度
+			// INT16 mm, nn, kk;
+			// FLOAT32 nnn, kkk;
+			// for (i_fft = 0; i_fft < 1024; i_fft++)
+			// {
+			// 	kk = 1024 / N_FFT;
+			// 	mm = i_fft / kk;
+			// 	nn = i_fft % kk;
+			// 	kkk = (double)kk;
+			// 	nnn = (double)nn;
+			// 	// strain_avg_ffted[i_fft] = x_fft_new[mm] * ((kkk - nnn) / kkk) + x_fft_new[mm + 1] * (nnn / kkk);
+			// 	strain_avg_ffted[i_fft] = x_fft_neww[mm] * ((kkk - nnn) / kkk) + x_fft_neww[mm + 1] * (nnn / kkk);
+			// }
+
 			// generate_compensation(); 参数 1.补偿(输出) 2.SG参考 3.SG反馈 SG_ave 4.hy band 5.current_step 6.offset
 			for (n_com = 0; n_com < ENCODER_MAX_COUNT + 1; n_com++)
 			{
@@ -1246,6 +1366,10 @@ interrupt void StrainGaugeRead(void)
 				if (strain_avg[n_com] - strain_offset < strain_ref[n_com] / 4 - hy_band)
 				{
 					compensation[n_com] = compensation[n_com] + current_step;
+				}
+				if (strain_ref[n_com] < value_cutoff)
+				{
+					compensation[n_com] = -square_peak;
 				}
 			}
 			rotate_period_count_cal = 0;

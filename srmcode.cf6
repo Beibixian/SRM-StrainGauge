@@ -32,7 +32,7 @@
     <boolean>false</boolean>
   </_bRBtn_TrgWidth>
   <_bTrgWidthValue>
-    <double>0.0002</double>
+    <double>0.002</double>
     <double>0</double>
     <double>0</double>
     <double>0</double>
@@ -93,21 +93,21 @@
       <i_NormWin1Win4>0</i_NormWin1Win4>
       <Button_Name>Win1</Button_Name>
       <bColorPickerIndex>8</bColorPickerIndex>
-      <bNormVariableIndex>27</bNormVariableIndex>
+      <bNormVariableIndex>29</bNormVariableIndex>
     </BindWaveNormRec>
     <BindWaveNormRec>
-      <PrebNormPosValue>-0.2</PrebNormPosValue>
+      <PrebNormPosValue>0</PrebNormPosValue>
       <OnChipVarAddress>0</OnChipVarAddress>
       <OnchipVarType>0</OnchipVarType>
       <bNormValDivValue>0.2</bNormValDivValue>
       <bNormPosValue>0</bNormPosValue>
       <bNormPosAngle>90</bNormPosAngle>
       <bNormOffsetValue>0</bNormOffsetValue>
-      <bNormOnOff>true</bNormOnOff>
+      <bNormOnOff>false</bNormOnOff>
       <i_NormWin1Win4>2</i_NormWin1Win4>
       <Button_Name>Win3</Button_Name>
       <bColorPickerIndex>18</bColorPickerIndex>
-      <bNormVariableIndex>46</bNormVariableIndex>
+      <bNormVariableIndex>51</bNormVariableIndex>
     </BindWaveNormRec>
     <BindWaveNormRec>
       <PrebNormPosValue>0</PrebNormPosValue>
@@ -121,7 +121,7 @@
       <i_NormWin1Win4>2</i_NormWin1Win4>
       <Button_Name>Win3</Button_Name>
       <bColorPickerIndex>19</bColorPickerIndex>
-      <bNormVariableIndex>41</bNormVariableIndex>
+      <bNormVariableIndex>45</bNormVariableIndex>
     </BindWaveNormRec>
     <BindWaveNormRec>
       <PrebNormPosValue>0</PrebNormPosValue>
@@ -135,6 +135,34 @@
       <i_NormWin1Win4>2</i_NormWin1Win4>
       <Button_Name>Win3</Button_Name>
       <bColorPickerIndex>8</bColorPickerIndex>
+      <bNormVariableIndex>47</bNormVariableIndex>
+    </BindWaveNormRec>
+    <BindWaveNormRec>
+      <PrebNormPosValue>0</PrebNormPosValue>
+      <OnChipVarAddress>0</OnChipVarAddress>
+      <OnchipVarType>0</OnchipVarType>
+      <bNormValDivValue>2</bNormValDivValue>
+      <bNormPosValue>-6</bNormPosValue>
+      <bNormPosAngle>-45</bNormPosAngle>
+      <bNormOffsetValue>0</bNormOffsetValue>
+      <bNormOnOff>true</bNormOnOff>
+      <i_NormWin1Win4>1</i_NormWin1Win4>
+      <Button_Name>Win2</Button_Name>
+      <bColorPickerIndex>8</bColorPickerIndex>
+      <bNormVariableIndex>41</bNormVariableIndex>
+    </BindWaveNormRec>
+    <BindWaveNormRec>
+      <PrebNormPosValue>0</PrebNormPosValue>
+      <OnChipVarAddress>0</OnChipVarAddress>
+      <OnchipVarType>0</OnchipVarType>
+      <bNormValDivValue>2</bNormValDivValue>
+      <bNormPosValue>-6</bNormPosValue>
+      <bNormPosAngle>-45</bNormPosAngle>
+      <bNormOffsetValue>0</bNormOffsetValue>
+      <bNormOnOff>true</bNormOnOff>
+      <i_NormWin1Win4>1</i_NormWin1Win4>
+      <Button_Name>Win2</Button_Name>
+      <bColorPickerIndex>19</bColorPickerIndex>
       <bNormVariableIndex>42</bNormVariableIndex>
     </BindWaveNormRec>
     <BindWaveNormRec>
@@ -142,112 +170,84 @@
       <OnChipVarAddress>0</OnChipVarAddress>
       <OnchipVarType>0</OnchipVarType>
       <bNormValDivValue>2</bNormValDivValue>
-      <bNormPosValue>0</bNormPosValue>
-      <bNormPosAngle>90</bNormPosAngle>
+      <bNormPosValue>-6</bNormPosValue>
+      <bNormPosAngle>-45</bNormPosAngle>
       <bNormOffsetValue>0</bNormOffsetValue>
-      <bNormOnOff>false</bNormOnOff>
+      <bNormOnOff>true</bNormOnOff>
       <i_NormWin1Win4>1</i_NormWin1Win4>
       <Button_Name>Win2</Button_Name>
-      <bColorPickerIndex>8</bColorPickerIndex>
-      <bNormVariableIndex>37</bNormVariableIndex>
+      <bColorPickerIndex>13</bColorPickerIndex>
+      <bNormVariableIndex>43</bNormVariableIndex>
     </BindWaveNormRec>
     <BindWaveNormRec>
       <PrebNormPosValue>0</PrebNormPosValue>
       <OnChipVarAddress>0</OnChipVarAddress>
       <OnchipVarType>0</OnchipVarType>
       <bNormValDivValue>5</bNormValDivValue>
-      <bNormPosValue>-10</bNormPosValue>
-      <bNormPosAngle>0</bNormPosAngle>
+      <bNormPosValue>0</bNormPosValue>
+      <bNormPosAngle>90</bNormPosAngle>
       <bNormOffsetValue>0</bNormOffsetValue>
-      <bNormOnOff>true</bNormOnOff>
+      <bNormOnOff>false</bNormOnOff>
       <i_NormWin1Win4>1</i_NormWin1Win4>
       <Button_Name>Win2</Button_Name>
       <bColorPickerIndex>19</bColorPickerIndex>
-      <bNormVariableIndex>38</bNormVariableIndex>
+      <bNormVariableIndex>0</bNormVariableIndex>
     </BindWaveNormRec>
     <BindWaveNormRec>
       <PrebNormPosValue>0</PrebNormPosValue>
       <OnChipVarAddress>0</OnChipVarAddress>
       <OnchipVarType>0</OnchipVarType>
       <bNormValDivValue>2</bNormValDivValue>
-      <bNormPosValue>0</bNormPosValue>
-      <bNormPosAngle>90</bNormPosAngle>
-      <bNormOffsetValue>0</bNormOffsetValue>
-      <bNormOnOff>false</bNormOnOff>
-      <i_NormWin1Win4>1</i_NormWin1Win4>
-      <Button_Name>Win2</Button_Name>
-      <bColorPickerIndex>13</bColorPickerIndex>
-      <bNormVariableIndex>39</bNormVariableIndex>
-    </BindWaveNormRec>
-    <BindWaveNormRec>
-      <PrebNormPosValue>0</PrebNormPosValue>
-      <OnChipVarAddress>0</OnChipVarAddress>
-      <OnchipVarType>0</OnchipVarType>
-      <bNormValDivValue>5</bNormValDivValue>
-      <bNormPosValue>0</bNormPosValue>
-      <bNormPosAngle>90</bNormPosAngle>
-      <bNormOffsetValue>0</bNormOffsetValue>
-      <bNormOnOff>false</bNormOnOff>
-      <i_NormWin1Win4>1</i_NormWin1Win4>
-      <Button_Name>Win2</Button_Name>
-      <bColorPickerIndex>19</bColorPickerIndex>
-      <bNormVariableIndex>0</bNormVariableIndex>
-    </BindWaveNormRec>
-    <BindWaveNormRec>
-      <PrebNormPosValue>0</PrebNormPosValue>
-      <OnChipVarAddress>0</OnChipVarAddress>
-      <OnchipVarType>0</OnchipVarType>
-      <bNormValDivValue>5</bNormValDivValue>
-      <bNormPosValue>0</bNormPosValue>
-      <bNormPosAngle>90</bNormPosAngle>
+      <bNormPosValue>-6</bNormPosValue>
+      <bNormPosAngle>-45</bNormPosAngle>
       <bNormOffsetValue>0</bNormOffsetValue>
       <bNormOnOff>false</bNormOnOff>
       <i_NormWin1Win4>1</i_NormWin1Win4>
       <Button_Name>Win2</Button_Name>
       <bColorPickerIndex>9</bColorPickerIndex>
-      <bNormVariableIndex>29</bNormVariableIndex>
-    </BindWaveNormRec>
-    <BindWaveNormRec>
-      <PrebNormPosValue>0</PrebNormPosValue>
-      <OnChipVarAddress>0</OnChipVarAddress>
-      <OnchipVarType>0</OnchipVarType>
-      <bNormValDivValue>5</bNormValDivValue>
-      <bNormPosValue>-10</bNormPosValue>
-      <bNormPosAngle>0</bNormPosAngle>
-      <bNormOffsetValue>0</bNormOffsetValue>
-      <bNormOnOff>true</bNormOnOff>
-      <i_NormWin1Win4>1</i_NormWin1Win4>
-      <Button_Name>Win2</Button_Name>
-      <bColorPickerIndex>11</bColorPickerIndex>
-      <bNormVariableIndex>30</bNormVariableIndex>
-    </BindWaveNormRec>
-    <BindWaveNormRec>
-      <PrebNormPosValue>0</PrebNormPosValue>
-      <OnChipVarAddress>0</OnChipVarAddress>
-      <OnchipVarType>0</OnchipVarType>
-      <bNormValDivValue>5</bNormValDivValue>
-      <bNormPosValue>0</bNormPosValue>
-      <bNormPosAngle>90</bNormPosAngle>
-      <bNormOffsetValue>0</bNormOffsetValue>
-      <bNormOnOff>false</bNormOnOff>
-      <i_NormWin1Win4>1</i_NormWin1Win4>
-      <Button_Name>Win2</Button_Name>
-      <bColorPickerIndex>21</bColorPickerIndex>
       <bNormVariableIndex>31</bNormVariableIndex>
     </BindWaveNormRec>
     <BindWaveNormRec>
       <PrebNormPosValue>0</PrebNormPosValue>
       <OnChipVarAddress>0</OnChipVarAddress>
       <OnchipVarType>0</OnchipVarType>
-      <bNormValDivValue>1</bNormValDivValue>
-      <bNormPosValue>0</bNormPosValue>
-      <bNormPosAngle>90</bNormPosAngle>
+      <bNormValDivValue>2</bNormValDivValue>
+      <bNormPosValue>-6</bNormPosValue>
+      <bNormPosAngle>-45</bNormPosAngle>
+      <bNormOffsetValue>0</bNormOffsetValue>
+      <bNormOnOff>true</bNormOnOff>
+      <i_NormWin1Win4>1</i_NormWin1Win4>
+      <Button_Name>Win2</Button_Name>
+      <bColorPickerIndex>11</bColorPickerIndex>
+      <bNormVariableIndex>32</bNormVariableIndex>
+    </BindWaveNormRec>
+    <BindWaveNormRec>
+      <PrebNormPosValue>0</PrebNormPosValue>
+      <OnChipVarAddress>0</OnChipVarAddress>
+      <OnchipVarType>0</OnchipVarType>
+      <bNormValDivValue>2</bNormValDivValue>
+      <bNormPosValue>-6</bNormPosValue>
+      <bNormPosAngle>-45</bNormPosAngle>
       <bNormOffsetValue>0</bNormOffsetValue>
       <bNormOnOff>false</bNormOnOff>
-      <i_NormWin1Win4>0</i_NormWin1Win4>
-      <Button_Name>Win1</Button_Name>
-      <bColorPickerIndex>19</bColorPickerIndex>
-      <bNormVariableIndex>0</bNormVariableIndex>
+      <i_NormWin1Win4>1</i_NormWin1Win4>
+      <Button_Name>Win2</Button_Name>
+      <bColorPickerIndex>21</bColorPickerIndex>
+      <bNormVariableIndex>33</bNormVariableIndex>
+    </BindWaveNormRec>
+    <BindWaveNormRec>
+      <PrebNormPosValue>0</PrebNormPosValue>
+      <OnChipVarAddress>0</OnChipVarAddress>
+      <OnchipVarType>0</OnchipVarType>
+      <bNormValDivValue>0.2</bNormValDivValue>
+      <bNormPosValue>-0.6</bNormPosValue>
+      <bNormPosAngle>-44.999999999999972</bNormPosAngle>
+      <bNormOffsetValue>0</bNormOffsetValue>
+      <bNormOnOff>true</bNormOnOff>
+      <i_NormWin1Win4>2</i_NormWin1Win4>
+      <Button_Name>Win3</Button_Name>
+      <bColorPickerIndex>16</bColorPickerIndex>
+      <bNormVariableIndex>46</bNormVariableIndex>
     </BindWaveNormRec>
     <BindWaveNormRec>
       <PrebNormPosValue>0</PrebNormPosValue>
@@ -887,10 +887,10 @@
   <bCurBColorIndex>2</bCurBColorIndex>
   <bCurGrabColorIndex>3</bCurGrabColorIndex>
   <bRecordLength>100000</bRecordLength>
-  <bNumberOfData>20000</bNumberOfData>
+  <bNumberOfData>5000</bNumberOfData>
   <bCurRangeValue>100</bCurRangeValue>
-  <bHorValue>0.02</bHorValue>
-  <bHorValue_rough>0.02</bHorValue_rough>
+  <bHorValue>0.005</bHorValue>
+  <bHorValue_rough>0.005</bHorValue_rough>
   <bCurPosValue>0</bCurPosValue>
   <bIndex_TrgNo>0</bIndex_TrgNo>
   <bTrgPosValue>0</bTrgPosValue>
@@ -912,6 +912,7 @@
     <string>i1</string>
     <string>i2</string>
     <string>i3</string>
+    <string>i_fft</string>
     <string>Idc</string>
     <string>inverter_on</string>
     <string>MAX_PHASE_CURRENT</string>
@@ -924,21 +925,25 @@
     <string>p3_deg</string>
     <string>p3_rad</string>
     <string>rotate_period_count_cal</string>
+    <string>RPM_SET</string>
     <string>SCOPE_abz</string>
     <string>SCOPE_compensation</string>
     <string>SCOPE_fedIu</string>
     <string>SCOPE_fedIv</string>
     <string>SCOPE_fedIw</string>
     <string>scope_interval</string>
+    <string>SCOPE_magnitude_fft</string>
     <string>SCOPE_omega</string>
     <string>SCOPE_outVu</string>
     <string>SCOPE_outVv</string>
     <string>SCOPE_outVw</string>
+    <string>SCOPE_phase_fft</string>
     <string>SCOPE_refIu</string>
     <string>SCOPE_refIv</string>
     <string>SCOPE_refIw</string>
     <string>SCOPE_rpm</string>
     <string>SCOPE_strain_avg</string>
+    <string>SCOPE_strain_avg_ffted</string>
     <string>SCOPE_strain_ref</string>
     <string>SCOPE_theta</string>
     <string>SCOPE_torque</string>
