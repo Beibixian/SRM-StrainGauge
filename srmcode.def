@@ -1,24 +1,26 @@
 A_aligned_encoder_count 11f034a4 SHORT 4
-a_fft c023788 FLOAT 20 128
-a_fft_new c023b88 FLOAT 20 128
-a_fft_neww c024388 FLOAT 20 128
-abz_prev 11f03584 INT 3
-adc_offset_BND0 c01e158 FLOAT 20 8
-adc_offset_BND1 c01e128 FLOAT 20 12
-adc_range_BND0 c01e178 FLOAT 20 8
+a_fft c0246e8 FLOAT 20 32
+a_fft_new c0247e8 FLOAT 20 32
+a_fft_neww c0249e8 FLOAT 20 32
+abz_prev 11f03590 INT 3
+adc_offset_BND0 c01e238 FLOAT 20 8
+adc_offset_BND1 c01e1e8 FLOAT 20 12
+adc_range_BND0 c01e258 FLOAT 20 8
 adjustFedIu 11f0354c FLOAT 1
+AdjustFre 11f0357c FLOAT 1
+AdjustTorque 11f03578 FLOAT 1
 avg_max_count 11f03570 SHORT 4
 avg_record_times c018000 FLOAT 20 1024
-b_fft c023988 FLOAT 20 128
-b_fft_new c023d88 FLOAT 20 128
-b_fft_neww c024588 FLOAT 20 128
+b_fft c024768 FLOAT 20 32
+b_fft_new c024868 FLOAT 20 32
+b_fft_neww c024a68 FLOAT 20 32
 compensation c019000 FLOAT 20 1024
-current_step 11f03580 FLOAT 1
-data c022d00 FLOAT 20 8
-factor_cal_time 11f0358c INT 3
+current_step 11f0358c FLOAT 1
+data c0243e0 FLOAT 20 8
+factor_cal_time 11f03598 INT 3
 gateControl_interval 11f03498 FLOAT 1
 gateSignalSequence 11f034b0 SHORT 4
-hy_band 11f0357c FLOAT 1
+hy_band 11f03588 FLOAT 1
 hysFLagIu 11f03550 SHORT 4
 hysterisis_limit 11f034a8 FLOAT 1
 i0 11f034b4 FLOAT 1
@@ -28,19 +30,20 @@ i3 11f034c0 FLOAT 1
 i_fft 11f03558 SHORT 4
 Idc 11f03548 FLOAT 1
 inverter_on 11f034ac INT 3
-magnitude c023188 FLOAT 20 128
+magnitude c024568 FLOAT 20 32
 MAX_PHASE_CURRENT 11f034f0 FLOAT 1
-n_com 11f03590 INT 3
-n_offset 11f03594 INT 3
+n_com 11f0359c INT 3
+n_offset 11f035a0 INT 3
 p1_deg 11f034c4 FLOAT 1
 p1_rad 11f034d0 FLOAT 1
 p2_deg 11f034c8 FLOAT 1
 p2_rad 11f034d4 FLOAT 1
 p3_deg 11f034cc FLOAT 1
 p3_rad 11f034d8 FLOAT 1
-phase c022f88 FLOAT 20 128
-R c022d88 FLOAT 20 128
-rotate_period_count_cal 11f03588 INT 3
+phase c0244e8 FLOAT 20 32
+Proposed_Method_On 11f03580 FLOAT 1
+R c024468 FLOAT 20 32
+rotate_period_count_cal 11f03594 INT 3
 RPM_SET 11f0356c FLOAT 1
 SCOPE_abz 11f0350c FLOAT 1
 SCOPE_compensation 11f03524 FLOAT 1
@@ -68,7 +71,7 @@ strain 11f03554 FLOAT 1
 strain_avg c01a000 FLOAT 20 1024
 strain_avg_ffted c01b000 FLOAT 20 1024
 strain_avg_temp c01c000 FLOAT 20 1024
-strain_offset 11f03578 FLOAT 1
+strain_offset 11f03584 FLOAT 1
 strain_ref c01d000 FLOAT 20 1024
 StrainGaugeRead_interval 11f0349c FLOAT 1
 theta_off_deg 11f034e0 FLOAT 1
@@ -78,9 +81,9 @@ theta_on_rad 11f034e4 FLOAT 1
 value_cutoff 11f03574 FLOAT 1
 Vdc 11f03544 FLOAT 1
 virtual_frequency 11f034b2 SHORT 4
-x_fft c023388 FLOAT 20 128
-x_fft_new c023f88 FLOAT 20 128
-x_fft_neww c024788 FLOAT 20 128
-y_fft c023588 FLOAT 20 128
-y_fft_new c024188 FLOAT 20 128
-y_fft_neww c024988 FLOAT 20 128
+x_fft c0245e8 FLOAT 20 32
+x_fft_new c0248e8 FLOAT 20 32
+x_fft_neww c024ae8 FLOAT 20 32
+y_fft c024668 FLOAT 20 32
+y_fft_new c024968 FLOAT 20 32
+y_fft_neww c024b68 FLOAT 20 32

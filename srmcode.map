@@ -1,10 +1,10 @@
 ******************************************************************************
                TMS320C6x Linker PC v7.4.24                     
 ******************************************************************************
->> Linked Wed May 31 18:15:24 2023
+>> Linked Sun Jun 04 18:39:00 2023
 
 OUTPUT FILE NAME:   <srmcode.out>
-ENTRY POINT SYMBOL: "_c_int00"  address: 0c0226c0
+ENTRY POINT SYMBOL: "_c_int00"  address: 0c023b80
 
 
 MEMORY CONFIGURATION
@@ -13,7 +13,7 @@ MEMORY CONFIGURATION
 ----------------------  --------  ---------  --------  --------  ----  --------
   IPC_ISR_REG           02620244   00000004  00000000  00000004  RWIX
   DDR3_INIT_CODE        0c000000   00018000  00000000  00018000  RW X
-  USER_SRAM_1_4         0c018000   000e8000  0000fe34  000d81cc  RWIX
+  USER_SRAM_1_4         0c018000   000e8000  0000fb1c  000d84e4  RWIX
   KNL0_SRAM_1_4         10800000   000fff80  00000000  000fff80  RWIX
   KNL0_BOOT_AREA        108fff80   0000007c  00000000  0000007c  RWIX
   KNL0_MAGIC_ADDRESS    108ffffc   00000004  00000000  00000004  RWIX
@@ -24,7 +24,7 @@ MEMORY CONFIGURATION
   KNL1_BOOT_AREA        118fff84   00000078  00000000  00000078  RWIX
   KNL1_MAGIC_ADDRESS    118ffffc   00000004  00000000  00000004  RWIX
   USER_SRAM_2_4         11e00000   00008000  00003a60  000045a0  RWIX
-  USER_SRAM_3_4         11f00000   00008000  000035ac  00004a54  RWIX
+  USER_SRAM_3_4         11f00000   00008000  000035b8  00004a48  RWIX
   TI_BOOT_ROM           20b00000   00020000  00000000  00020000  RWIX
   KNL0_SRAM_2_4         80000000   000fe000  00000000  000fe000  RWIX
   USER_SRAM_4_4         80100000   01800000  00000000  01800000  RWIX
@@ -37,26 +37,26 @@ SEGMENT ALLOCATION MAP
 
 run origin  load origin   length   init length attrs members
 ----------  ----------- ---------- ----------- ----- -------
-0c018000    0c018000    000061a8   000061a8    rw-
-  0c018000    0c018000    000061a8   000061a8    rw- .fardata
-0c01e200    0c01e200    00004b00   00004b00    r-x
-  0c01e200    0c01e200    00004b00   00004b00    r-x .text
-0c022d00    0c022d00    00001eec   00000000    rw-
-  0c022d00    0c022d00    00001eec   00000000    rw- .far
-0c024c00    0c024c00    00000090   00000090    r--
-  0c024c00    0c024c00    00000090   00000090    r-- .const
-0c024d00    0c024d00    00000010   00000010    r--
-  0c024d00    0c024d00    00000010   00000010    r-- .switch
-0c024d80    0c024d80    00003200   00003200    r--
-  0c024d80    0c024d80    00003200   00003200    r-- .cinit
+0c018000    0c018000    00006288   00006288    rw-
+  0c018000    0c018000    00006288   00006288    rw- .fardata
+0c01e300    0c01e300    000060e0   000060e0    r-x
+  0c01e300    0c01e300    000060e0   000060e0    r-x .text
+0c0243e0    0c0243e0    0000086c   00000000    rw-
+  0c0243e0    0c0243e0    0000086c   00000000    rw- .far
+0c024c80    0c024c80    00000090   00000090    r--
+  0c024c80    0c024c80    00000090   00000090    r-- .const
+0c024d80    0c024d80    00000010   00000010    r--
+  0c024d80    0c024d80    00000010   00000010    r-- .switch
+0c024e00    0c024e00    00002ea8   00002ea8    r--
+  0c024e00    0c024e00    00002ea8   00002ea8    r-- .cinit
 11e00000    11e00000    00003a60   00003a60    r-x
   11e00000    11e00000    00003a60   00003a60    r-x .text_2
 11f00000    11f00000    0000356c   00002498    rw-
   11f00000    11f00000    00002498   00002498    rw- .data_2
   11f02498    11f02498    00001000   00000000    rw- .stack
   11f03498    11f03498    000000d4   00000000    rw- .bss
-11f0356c    11f0356c    00000040   00000040    rw-
-  11f0356c    11f0356c    00000040   00000040    rw- .neardata
+11f0356c    11f0356c    0000004c   0000004c    rw-
+  11f0356c    11f0356c    0000004c   0000004c    rw- .neardata
 
 
 SECTION ALLOCATION MAP
@@ -64,7 +64,7 @@ SECTION ALLOCATION MAP
  output                                  attributes/
 section   page    origin      length       input sections
 --------  ----  ----------  ----------   ----------------
-.fardata   0    0c018000    000061a8     
+.fardata   0    0c018000    00006288     
                   0c018000    00001000     srmcode.obj (.fardata:avg_record_times)
                   0c019000    00001000     srmcode.obj (.fardata:compensation)
                   0c01a000    00001000     srmcode.obj (.fardata:strain_avg)
@@ -72,113 +72,132 @@ section   page    origin      length       input sections
                   0c01c000    00001000     srmcode.obj (.fardata:strain_avg_temp)
                   0c01d000    00001000     srmcode.obj (.fardata:strain_ref)
                   0c01e000    000000a8     mwio4.lib : mw_platform.obj (.fardata)
-                  0c01e0a8    00000040     rts6600_elf.lib : cos.obj (.fardata:R$1)
-                  0c01e0e8    00000040                     : sin.obj (.fardata:R$1)
-                  0c01e128    00000030     srmcode.obj (.fardata:adc_offset_BND1)
-                  0c01e158    00000020     srmcode.obj (.fardata:adc_offset_BND0)
-                  0c01e178    00000020     srmcode.obj (.fardata:adc_range_BND0)
-                  0c01e198    0000000c     rts6600_elf.lib : exit.obj (.fardata)
-                  0c01e1a4    00000004                     : errno.obj (.fardata)
+                  0c01e0a8    00000080     rts6600_elf.lib : xvalues.obj (.fardata)
+                  0c01e128    00000040                     : cos.obj (.fardata:R$1)
+                  0c01e168    00000040                     : sin.obj (.fardata:R$1)
+                  0c01e1a8    00000040                     : atan.obj (.fardata:arctan_consts$1)
+                  0c01e1e8    00000030     srmcode.obj (.fardata:adc_offset_BND1)
+                  0c01e218    00000020     rts6600_elf.lib : atan.obj (.fardata:A$2)
+                  0c01e238    00000020     srmcode.obj (.fardata:adc_offset_BND0)
+                  0c01e258    00000020     srmcode.obj (.fardata:adc_range_BND0)
+                  0c01e278    0000000c     rts6600_elf.lib : exit.obj (.fardata)
+                  0c01e284    00000004                     : errno.obj (.fardata)
 
-.text      0    0c01e200    00004b00     
-                  0c01e200    00000aa0     KlabIMP.obj (.text)
-                  0c01eca0    00000a00     srmcode.obj (.text:retain)
-                  0c01f6a0    00000760     srmcode.obj (.text)
-                  0c01fe00    000006c0     mwio4.lib : mw_i2c_eeprom.obj (.text)
-                  0c0204c0    000005c0     rts6600_elf.lib : divd.obj (.text:__c6xabi_divd)
-                  0c020a80    000003c0     mwio4.lib : mw_spi.obj (.text)
-                  0c020e40    00000360               : mw_flash.obj (.text)
-                  0c0211a0    00000340               : mw_platform.obj (.text)
-                  0c0214e0    000002c0     rts6600_elf.lib : cos.obj (.text:cos)
-                  0c0217a0    00000280                     : divf.obj (.text:__c6xabi_divf)
-                  0c021a20    00000280                     : sin.obj (.text:sin)
-                  0c021ca0    00000180                     : copy_decompress_rle.obj (.text:__TI_decompress_rle_core)
-                  0c021e20    00000120                     : sqrtf.obj (.text:sqrtf)
-                  0c021f40    00000100                     : autoinit.obj (.text:_auto_init_elf)
-                  0c022040    00000100                     : cpy_tbl.obj (.text:copy_in)
-                  0c022140    000000e0                     : divi.obj (.text:__divi)
-                  0c022220    000000c0                     : divu.obj (.text:__divu)
-                  0c0222e0    000000c0                     : exit.obj (.text:exit)
-                  0c0223a0    000000c0                     : tls.obj (.text:tls:init:__TI_tls_init)
-                  0c022460    000000a0                     : round.obj (.text:__c6xabi_nround)
-                  0c022500    000000a0                     : memcpy64.obj (.text:memcpy)
-                  0c0225a0    000000a0                     : modf.obj (.text:modf)
-                  0c022640    00000080                     : fixdu.obj (.text:__c6xabi_fixdu)
-                  0c0226c0    00000080                     : boot.obj (.text:_c_int00)
-                  0c022740    00000080     mwio4.lib : PEV_LIB.obj (.text)
-                  0c0227c0    00000080               : mw_i2c.obj (.text)
-                  0c022840    00000060     rts6600_elf.lib : cpp_init.obj (.text:__TI_cpp_init)
-                  0c0228a0    00000060                     : frcmpyd_div.obj (.text:__c6xabi_frcmpyd_div)
-                  0c022900    00000060                     : llshift.obj (.text:__c6xabi_llshru)
-                  0c022960    00000040                     : args_main.obj (.text:_args_main)
-                  0c0229a0    00000020     ti.csl.ae66 : csl_gpioGetBaseAddress.oe66 (.text:CSL_GPIO_open)
-                  0c0229c0    00000020     Main.obj (.text)
-                  0c0229e0    00000020     rts6600_elf.lib : errno.obj (.text:__c6xabi_errno_addr)
-                  0c022a00    00000020                     : trunc.obj (.text:__c6xabi_trunc)
-                  0c022a20    00000020                     : exit.obj (.text:abort)
-                  0c022a40    00000020                     : copy_decompress_none.obj (.text:decompress:none:__TI_decompress_none)
-                  0c022a60    00000020                     : copy_decompress_rle.obj (.text:decompress:rle24:__TI_decompress_rle24)
-                  0c022a80    00000010     mwio4.lib : EMIF16.obj ($Tramp$S$$EMF_EnableIntr_s32)
-                  0c022a90    00000010               : gpio_int.obj ($Tramp$S$$GPI_init_vo)
-                  0c022aa0    00000010               : mwintc.obj ($Tramp$S$$mwintc_setupApp)
-                  0c022ab0    00000010               : EMIF16.obj ($Tramp$S$$EMF_Read_s32)
-                  0c022ac0    00000010               : PEV_INV_LIB.obj ($Tramp$S$$PEV_inverter_start_pwm)
-                  0c022ad0    00000010               : PEV_INV_LIB.obj ($Tramp$S$$PEV_ad_start)
-                  0c022ae0    00000010               : mwintc.obj ($Tramp$S$$IRQ_globalEnable)
-                  0c022af0    00000010               : PEV_INV_LIB.obj ($Tramp$S$$PEV_abz_write)
-                  0c022b00    00000010               : PEV_INV_LIB.obj ($Tramp$S$$PEV_abz_get_resolver_pos)
-                  0c022b10    00000010               : PEV_INV_LIB.obj ($Tramp$S$$PEV_abz_clear_resolver_err)
-                  0c022b20    00000010               : PEV_INV_LIB.obj ($Tramp$S$$PEV_abz_clear)
-                  0c022b30    00000010               : PEV_INV_LIB.obj ($Tramp$S$$PEV_abz_init_maxcount)
-                  0c022b40    00000010               : PEV_INV_LIB.obj ($Tramp$S$$PEV_abz_set_mode)
-                  0c022b50    00000010               : PEV_INV_LIB.obj ($Tramp$S$$PEV_inverter_init_adtrig_timing)
-                  0c022b60    00000010               : PEV_INV_LIB.obj ($Tramp$S$$PEV_inverter_enable_int)
-                  0c022b70    00000010               : PEV_INV_LIB.obj ($Tramp$S$$PEV_inverter_set_uvw)
-                  0c022b80    00000010               : PEV_INV_LIB.obj ($Tramp$S$$PEV_inverter_init)
-                  0c022b90    00000010               : ADC_LIB.obj ($Tramp$S$$ADC_set_mode)
-                  0c022ba0    00000010               : PEV_INV_LIB.obj ($Tramp$S$$PEV_sync_ad_out)
-                  0c022bb0    00000010               : PEV_INV_LIB.obj ($Tramp$S$$PEV_ad_set_mode)
-                  0c022bc0    00000010               : ADC_LIB.obj ($Tramp$S$$ADC_set_offset)
-                  0c022bd0    00000010               : ADC_LIB.obj ($Tramp$S$$ADC_set_range)
-                  0c022be0    00000010               : PEV_INV_LIB.obj ($Tramp$S$$PEV_ad_set_offset)
-                  0c022bf0    00000010               : PEV_INV_LIB.obj ($Tramp$S$$PEV_ad_set_range)
-                  0c022c00    00000010               : ADC_LIB.obj ($Tramp$S$$ADC_init)
-                  0c022c10    00000010               : PEV_INV_LIB.obj ($Tramp$S$$PEV_sync_ad_init)
-                  0c022c20    00000010               : gpio_int.obj ($Tramp$S$$GPI_enable_int_vo)
-                  0c022c30    00000010               : gpio_int.obj ($Tramp$S$$GPI_setVector_vo)
-                  0c022c40    00000010               : PEV_INV_LIB.obj ($Tramp$S$$PEV_int_init)
-                  0c022c50    00000010               : timer_lib.obj ($Tramp$S$$C6657_timer1_start)
-                  0c022c60    00000010               : timer_lib.obj ($Tramp$S$$C6657_timer1_enable_int)
-                  0c022c70    00000010               : timer_lib.obj ($Tramp$S$$C6657_timer1_init_vector)
-                  0c022c80    00000010               : timer_lib.obj ($Tramp$S$$C6657_timer1_init)
-                  0c022c90    00000010               : mwintc.obj ($Tramp$S$$IRQ_globalDisable)
-                  0c022ca0    00000010               : ADC_LIB.obj ($Tramp$S$$ADC_in_grp)
-                  0c022cb0    00000010               : PEV_INV_LIB.obj ($Tramp$S$$PEV_inverter_control_gate)
-                  0c022cc0    00000010               : PEV_INV_LIB.obj ($Tramp$S$$PEV_abz_read)
-                  0c022cd0    00000010               : gpio_int.obj ($Tramp$S$$GPI_int_ack_vo)
-                  0c022ce0    00000010               : PEV_INV_LIB.obj ($Tramp$S$$PEV_ad_in_grp)
-                  0c022cf0    00000010               : timer_lib.obj ($Tramp$S$$C6657_timer1_clear_eventflag)
+.text      0    0c01e300    000060e0     
+                  0c01e300    00000f00     srmcode.obj (.text:retain)
+                  0c01f200    00000aa0     KlabIMP.obj (.text)
+                  0c01fca0    00000760     srmcode.obj (.text)
+                  0c020400    000006c0     mwio4.lib : mw_i2c_eeprom.obj (.text)
+                  0c020ac0    000005c0     rts6600_elf.lib : divd.obj (.text:__c6xabi_divd)
+                  0c021080    000003c0     mwio4.lib : mw_spi.obj (.text)
+                  0c021440    00000360               : mw_flash.obj (.text)
+                  0c0217a0    00000340               : mw_platform.obj (.text)
+                  0c021ae0    000002c0     rts6600_elf.lib : cos.obj (.text:cos)
+                  0c021da0    000002a0                     : xhypot.obj (.text:_Hypot)
+                  0c022040    00000280                     : divf.obj (.text:__c6xabi_divf)
+                  0c0222c0    00000280                     : sin.obj (.text:sin)
+                  0c022540    00000260                     : xdscale.obj (.text:_Dscale)
+                  0c0227a0    00000220                     : xdnorm.obj (.text:_Dnorm)
+                  0c0229c0    000001c0                     : atan.obj (.text:atan)
+                  0c022b80    00000180                     : copy_decompress_rle.obj (.text:__TI_decompress_rle_core)
+                  0c022d00    00000180                     : atan2.obj (.text:atan2)
+                  0c022e80    00000180                     : frexp.obj (.text:frexp)
+                  0c023000    00000160                     : sqrt.obj (.text:sqrt)
+                  0c023160    00000120                     : sqrtf.obj (.text:sqrtf)
+                  0c023280    00000100                     : autoinit.obj (.text:_auto_init_elf)
+                  0c023380    00000100                     : cpy_tbl.obj (.text:copy_in)
+                  0c023480    000000e0                     : divi.obj (.text:__divi)
+                  0c023560    000000e0                     : memset.obj (.text:memset)
+                  0c023640    000000c0                     : divu.obj (.text:__divu)
+                  0c023700    000000c0                     : exit.obj (.text:exit)
+                  0c0237c0    000000c0                     : tls.obj (.text:tls:init:__TI_tls_init)
+                  0c023880    000000a0                     : xdtest.obj (.text:_Dtest)
+                  0c023920    000000a0                     : round.obj (.text:__c6xabi_nround)
+                  0c0239c0    000000a0                     : memcpy64.obj (.text:memcpy)
+                  0c023a60    000000a0                     : modf.obj (.text:modf)
+                  0c023b00    00000080                     : fixdu.obj (.text:__c6xabi_fixdu)
+                  0c023b80    00000080                     : boot.obj (.text:_c_int00)
+                  0c023c00    00000080                     : hypot.obj (.text:hypot)
+                  0c023c80    00000080     mwio4.lib : PEV_LIB.obj (.text)
+                  0c023d00    00000080               : mw_i2c.obj (.text)
+                  0c023d80    00000060     rts6600_elf.lib : xferaise.obj (.text:_Feraise)
+                  0c023de0    00000060                     : cpp_init.obj (.text:__TI_cpp_init)
+                  0c023e40    00000060                     : frcmpyd_div.obj (.text:__c6xabi_frcmpyd_div)
+                  0c023ea0    00000060                     : llshift.obj (.text:__c6xabi_llshru)
+                  0c023f00    00000060                     : cabs.obj (.text:cabs)
+                  0c023f60    00000060                     : carg.obj (.text:carg)
+                  0c023fc0    00000040                     : args_main.obj (.text:_args_main)
+                  0c024000    00000040                     : cimag.obj (.text:cimag)
+                  0c024040    00000040                     : creal.obj (.text:creal)
+                  0c024080    00000020     ti.csl.ae66 : csl_gpioGetBaseAddress.oe66 (.text:CSL_GPIO_open)
+                  0c0240a0    00000020     Main.obj (.text)
+                  0c0240c0    00000020     rts6600_elf.lib : errno.obj (.text:__c6xabi_errno_addr)
+                  0c0240e0    00000020                     : trunc.obj (.text:__c6xabi_trunc)
+                  0c024100    00000020                     : exit.obj (.text:abort)
+                  0c024120    00000020                     : copy_decompress_none.obj (.text:decompress:none:__TI_decompress_none)
+                  0c024140    00000020                     : copy_decompress_rle.obj (.text:decompress:rle24:__TI_decompress_rle24)
+                  0c024160    00000010     mwio4.lib : EMIF16.obj ($Tramp$S$$EMF_EnableIntr_s32)
+                  0c024170    00000010               : gpio_int.obj ($Tramp$S$$GPI_init_vo)
+                  0c024180    00000010               : mwintc.obj ($Tramp$S$$mwintc_setupApp)
+                  0c024190    00000010               : EMIF16.obj ($Tramp$S$$EMF_Read_s32)
+                  0c0241a0    00000010               : PEV_INV_LIB.obj ($Tramp$S$$PEV_inverter_start_pwm)
+                  0c0241b0    00000010               : PEV_INV_LIB.obj ($Tramp$S$$PEV_ad_start)
+                  0c0241c0    00000010               : mwintc.obj ($Tramp$S$$IRQ_globalEnable)
+                  0c0241d0    00000010               : PEV_INV_LIB.obj ($Tramp$S$$PEV_abz_write)
+                  0c0241e0    00000010               : PEV_INV_LIB.obj ($Tramp$S$$PEV_abz_get_resolver_pos)
+                  0c0241f0    00000010               : PEV_INV_LIB.obj ($Tramp$S$$PEV_abz_clear_resolver_err)
+                  0c024200    00000010               : PEV_INV_LIB.obj ($Tramp$S$$PEV_abz_clear)
+                  0c024210    00000010               : PEV_INV_LIB.obj ($Tramp$S$$PEV_abz_init_maxcount)
+                  0c024220    00000010               : PEV_INV_LIB.obj ($Tramp$S$$PEV_abz_set_mode)
+                  0c024230    00000010               : PEV_INV_LIB.obj ($Tramp$S$$PEV_inverter_init_adtrig_timing)
+                  0c024240    00000010               : PEV_INV_LIB.obj ($Tramp$S$$PEV_inverter_enable_int)
+                  0c024250    00000010               : PEV_INV_LIB.obj ($Tramp$S$$PEV_inverter_set_uvw)
+                  0c024260    00000010               : PEV_INV_LIB.obj ($Tramp$S$$PEV_inverter_init)
+                  0c024270    00000010               : ADC_LIB.obj ($Tramp$S$$ADC_set_mode)
+                  0c024280    00000010               : PEV_INV_LIB.obj ($Tramp$S$$PEV_sync_ad_out)
+                  0c024290    00000010               : PEV_INV_LIB.obj ($Tramp$S$$PEV_ad_set_mode)
+                  0c0242a0    00000010               : ADC_LIB.obj ($Tramp$S$$ADC_set_offset)
+                  0c0242b0    00000010               : ADC_LIB.obj ($Tramp$S$$ADC_set_range)
+                  0c0242c0    00000010               : PEV_INV_LIB.obj ($Tramp$S$$PEV_ad_set_offset)
+                  0c0242d0    00000010               : PEV_INV_LIB.obj ($Tramp$S$$PEV_ad_set_range)
+                  0c0242e0    00000010               : ADC_LIB.obj ($Tramp$S$$ADC_init)
+                  0c0242f0    00000010               : PEV_INV_LIB.obj ($Tramp$S$$PEV_sync_ad_init)
+                  0c024300    00000010               : gpio_int.obj ($Tramp$S$$GPI_enable_int_vo)
+                  0c024310    00000010               : gpio_int.obj ($Tramp$S$$GPI_setVector_vo)
+                  0c024320    00000010               : PEV_INV_LIB.obj ($Tramp$S$$PEV_int_init)
+                  0c024330    00000010               : timer_lib.obj ($Tramp$S$$C6657_timer1_start)
+                  0c024340    00000010               : timer_lib.obj ($Tramp$S$$C6657_timer1_enable_int)
+                  0c024350    00000010               : timer_lib.obj ($Tramp$S$$C6657_timer1_init_vector)
+                  0c024360    00000010               : timer_lib.obj ($Tramp$S$$C6657_timer1_init)
+                  0c024370    00000010               : mwintc.obj ($Tramp$S$$IRQ_globalDisable)
+                  0c024380    00000010               : ADC_LIB.obj ($Tramp$S$$ADC_in_grp)
+                  0c024390    00000010               : PEV_INV_LIB.obj ($Tramp$S$$PEV_abz_read)
+                  0c0243a0    00000010               : PEV_INV_LIB.obj ($Tramp$S$$PEV_inverter_control_gate)
+                  0c0243b0    00000010               : gpio_int.obj ($Tramp$S$$GPI_int_ack_vo)
+                  0c0243c0    00000010               : PEV_INV_LIB.obj ($Tramp$S$$PEV_ad_in_grp)
+                  0c0243d0    00000010               : timer_lib.obj ($Tramp$S$$C6657_timer1_clear_eventflag)
 
-.far       0    0c022d00    00001eec     UNINITIALIZED
-                  0c022d00    00001e98     srmcode.obj (.far)
-                  0c024b98    00000048     KlabIMP.obj (.far)
-                  0c024be0    0000000c     mwio4.lib : EMIF16.obj (.far)
+.far       0    0c0243e0    0000086c     UNINITIALIZED
+                  0c0243e0    00000818     srmcode.obj (.far)
+                  0c024bf8    00000048     KlabIMP.obj (.far)
+                  0c024c40    0000000c     mwio4.lib : EMIF16.obj (.far)
 
-.const     0    0c024c00    00000090     
-                  0c024c00    00000090     KlabIMP.obj (.const)
+.const     0    0c024c80    00000090     
+                  0c024c80    00000090     KlabIMP.obj (.const)
 
-.switch    0    0c024d00    00000010     
-                  0c024d00    00000010     mwio4.lib : mw_flash.obj (.switch:mw_nor_erase)
+.switch    0    0c024d80    00000010     
+                  0c024d80    00000010     mwio4.lib : mw_flash.obj (.switch:mw_nor_erase)
 
-.cinit     0    0c024d80    00003200     
-                  0c024d80    0000206a     (.cinit..data_2.load) [load image, compression = rle]
-                  0c026dea    00000002     --HOLE-- [fill = 0]
-                  0c026dec    00001142     (.cinit..fardata.load) [load image, compression = rle]
-                  0c027f2e    00000002     --HOLE-- [fill = 0]
-                  0c027f30    0000002d     (.cinit..neardata.load) [load image, compression = rle]
-                  0c027f5d    00000003     --HOLE-- [fill = 0]
-                  0c027f60    00000008     (__TI_handler_table)
-                  0c027f68    00000018     (__TI_cinit_table)
+.cinit     0    0c024e00    00002ea8     
+                  0c024e00    0000206a     (.cinit..data_2.load) [load image, compression = rle]
+                  0c026e6a    00000002     --HOLE-- [fill = 0]
+                  0c026e6c    00000ddf     (.cinit..fardata.load) [load image, compression = rle]
+                  0c027c4b    00000001     --HOLE-- [fill = 0]
+                  0c027c4c    00000037     (.cinit..neardata.load) [load image, compression = rle]
+                  0c027c83    00000001     --HOLE-- [fill = 0]
+                  0c027c84    00000008     (__TI_handler_table)
+                  0c027c8c    00000004     --HOLE-- [fill = 0]
+                  0c027c90    00000018     (__TI_cinit_table)
 
 .text_2    0    11e00000    00003a60     
                   11e00000    00001960     mwio4.lib : PEV_INV_LIB.obj (.text)
@@ -220,24 +239,24 @@ section   page    origin      length       input sections
                   11f03568    00000004               : mw_spi.obj (.bss)
 
 .neardata 
-*          0    11f0356c    00000040     
-                  11f0356c    0000002c     srmcode.obj (.neardata)
-                  11f03598    0000000c     mwio4.lib : timer_lib.obj (.neardata)
-                  11f035a4    00000004               : csl2_intcOpen.obj (.neardata)
-                  11f035a8    00000004               : mw_platform.obj (.neardata)
+*          0    11f0356c    0000004c     
+                  11f0356c    00000038     srmcode.obj (.neardata)
+                  11f035a4    0000000c     mwio4.lib : timer_lib.obj (.neardata)
+                  11f035b0    00000004               : csl2_intcOpen.obj (.neardata)
+                  11f035b4    00000004               : mw_platform.obj (.neardata)
 
 
 LINKER GENERATED COPY TABLES
 
-__TI_cinit_table @ 0c027f68 records: 3, size/record: 8, table size: 24
-	.data_2: load addr=0c024d80, load size=0000206a bytes, run addr=11f00000, run size=00002498 bytes, compression=rle
-	.fardata: load addr=0c026dec, load size=00001142 bytes, run addr=0c018000, run size=000061a8 bytes, compression=rle
-	.neardata: load addr=0c027f30, load size=0000002d bytes, run addr=11f0356c, run size=00000040 bytes, compression=rle
+__TI_cinit_table @ 0c027c90 records: 3, size/record: 8, table size: 24
+	.data_2: load addr=0c024e00, load size=0000206a bytes, run addr=11f00000, run size=00002498 bytes, compression=rle
+	.fardata: load addr=0c026e6c, load size=00000ddf bytes, run addr=0c018000, run size=00006288 bytes, compression=rle
+	.neardata: load addr=0c027c4c, load size=00000037 bytes, run addr=11f0356c, run size=0000004c bytes, compression=rle
 
 
 LINKER GENERATED HANDLER TABLE
 
-__TI_handler_table @ 0c027f60 records: 2, size/record: 4, table size: 8
+__TI_handler_table @ 0c027c84 records: 2, size/record: 4, table size: 8
 	index: 0, handler: __TI_decompress_rle24
 	index: 1, handler: __TI_decompress_none
 
@@ -248,102 +267,102 @@ callee name               trampoline name
    callee addr  tramp addr   call addr  call info
 --------------  -----------  ---------  ----------------
 $.text:mwio4.lib<EMIF16.obj>$0x58c  $Tramp$S$$EMF_EnableIntr_s32
-   11e02bac     0c022a80     0c0229cc   Main.obj (.text)
+   11e02bac     0c024160     0c0240ac   Main.obj (.text)
 $.text:mwio4.lib<gpio_int.obj>$0x124  $Tramp$S$$GPI_init_vo
-   11e036a4     0c022a90     0c0229c8   Main.obj (.text)
+   11e036a4     0c024170     0c0240a8   Main.obj (.text)
 $.text:mwio4.lib<mwintc.obj>$0x34  $Tramp$S$$mwintc_setupApp
-   11e02c74     0c022aa0     0c0229c4   Main.obj (.text)
+   11e02c74     0c024180     0c0240a4   Main.obj (.text)
 $.text:mwio4.lib<EMIF16.obj>$0x218  $Tramp$S$$EMF_Read_s32
-   11e02838     0c022ab0     0c022788   mwio4.lib : PEV_LIB.obj (.text)
+   11e02838     0c024190     0c023cc8   mwio4.lib : PEV_LIB.obj (.text)
 $.text:mwio4.lib<PEV_INV_LIB.obj>$0x394  $Tramp$S$$PEV_inverter_start_pwm
-   11e00394     0c022ac0     0c01fdd8   srmcode.obj (.text)
+   11e00394     0c0241a0     0c0203d8   srmcode.obj (.text)
 $.text:mwio4.lib<PEV_INV_LIB.obj>$0xf10  $Tramp$S$$PEV_ad_start
-   11e00f10     0c022ad0     0c01fdd0   srmcode.obj (.text)
+   11e00f10     0c0241b0     0c0203d0   srmcode.obj (.text)
 $.text:mwio4.lib<mwintc.obj>$0x3f0  $Tramp$S$$IRQ_globalEnable
-   11e03030     0c022ae0     0c01fdc0   srmcode.obj (.text)
+   11e03030     0c0241c0     0c0203c0   srmcode.obj (.text)
 $.text:mwio4.lib<PEV_INV_LIB.obj>$0x16e8  $Tramp$S$$PEV_abz_write
-   11e016e8     0c022af0     0c01fdb4   srmcode.obj (.text)
+   11e016e8     0c0241d0     0c0203b4   srmcode.obj (.text)
 $.text:mwio4.lib<PEV_INV_LIB.obj>$0x1864  $Tramp$S$$PEV_abz_get_resolver_pos
-   11e01864     0c022b00     0c01fdb0   srmcode.obj (.text)
+   11e01864     0c0241e0     0c0203b0   srmcode.obj (.text)
 $.text:mwio4.lib<PEV_INV_LIB.obj>$0x18e0  $Tramp$S$$PEV_abz_clear_resolver_err
-   11e018e0     0c022b10     0c01fda8   srmcode.obj (.text)
+   11e018e0     0c0241f0     0c0203a8   srmcode.obj (.text)
 $.text:mwio4.lib<PEV_INV_LIB.obj>$0x1914  $Tramp$S$$PEV_abz_clear
-   11e01914     0c022b20     0c01fda4   srmcode.obj (.text)
+   11e01914     0c024200     0c0203a4   srmcode.obj (.text)
 $.text:mwio4.lib<PEV_INV_LIB.obj>$0x17e8  $Tramp$S$$PEV_abz_init_maxcount
-   11e017e8     0c022b30     0c01fd98   srmcode.obj (.text)
+   11e017e8     0c024210     0c020398   srmcode.obj (.text)
 $.text:mwio4.lib<PEV_INV_LIB.obj>$0x1734  $Tramp$S$$PEV_abz_set_mode
-   11e01734     0c022b40     0c01fd8c   srmcode.obj (.text)
+   11e01734     0c024220     0c02038c   srmcode.obj (.text)
 $.text:mwio4.lib<PEV_INV_LIB.obj>$0xaa8  $Tramp$S$$PEV_inverter_init_adtrig_timing
-   11e00aa8     0c022b50     0c01fd80   srmcode.obj (.text)
+   11e00aa8     0c024230     0c020380   srmcode.obj (.text)
 $.text:mwio4.lib<PEV_INV_LIB.obj>$0xcf4  $Tramp$S$$PEV_inverter_enable_int
-   11e00cf4     0c022b60     0c01fd78   srmcode.obj (.text)
+   11e00cf4     0c024240     0c020378   srmcode.obj (.text)
 $.text:mwio4.lib<PEV_INV_LIB.obj>$0x5e8  $Tramp$S$$PEV_inverter_set_uvw
-   11e005e8     0c022b70     0c01fd6c   srmcode.obj (.text)
+   11e005e8     0c024250     0c02036c   srmcode.obj (.text)
 $.text:mwio4.lib<PEV_INV_LIB.obj>$0xb84  $Tramp$S$$PEV_inverter_init
-   11e00b84     0c022b80     0c01fd58   srmcode.obj (.text)
+   11e00b84     0c024260     0c020358   srmcode.obj (.text)
 $.text:mwio4.lib<ADC_LIB.obj>$0xe0  $Tramp$S$$ADC_set_mode
-   11e01a40     0c022b90     0c01fd4c   srmcode.obj (.text)
+   11e01a40     0c024270     0c02034c   srmcode.obj (.text)
 $.text:mwio4.lib<PEV_INV_LIB.obj>$0x2b4  $Tramp$S$$PEV_sync_ad_out
-   11e002b4     0c022ba0     0c01fd44   srmcode.obj (.text)
+   11e002b4     0c024280     0c020344   srmcode.obj (.text)
 $.text:mwio4.lib<PEV_INV_LIB.obj>$0xfe0  $Tramp$S$$PEV_ad_set_mode
-   11e00fe0     0c022bb0     0c01fd38   srmcode.obj (.text)
+   11e00fe0     0c024290     0c020338   srmcode.obj (.text)
 $.text:mwio4.lib<ADC_LIB.obj>$0xb4  $Tramp$S$$ADC_set_offset
-   11e01a14     0c022bc0     0c01fd30   srmcode.obj (.text)
+   11e01a14     0c0242a0     0c020330   srmcode.obj (.text)
 $.text:mwio4.lib<ADC_LIB.obj>$0x70  $Tramp$S$$ADC_set_range
-   11e019d0     0c022bd0     0c01fd20   srmcode.obj (.text)
+   11e019d0     0c0242b0     0c020320   srmcode.obj (.text)
 $.text:mwio4.lib<PEV_INV_LIB.obj>$0xf98  $Tramp$S$$PEV_ad_set_offset
-   11e00f98     0c022be0     0c01fd14   srmcode.obj (.text)
-                             0c022760   mwio4.lib : PEV_LIB.obj (.text)
+   11e00f98     0c0242c0     0c020314   srmcode.obj (.text)
+                             0c023ca0   mwio4.lib : PEV_LIB.obj (.text)
 $.text:mwio4.lib<PEV_INV_LIB.obj>$0xf48  $Tramp$S$$PEV_ad_set_range
-   11e00f48     0c022bf0     0c01fd08   srmcode.obj (.text)
+   11e00f48     0c0242d0     0c020308   srmcode.obj (.text)
 $.text:mwio4.lib<ADC_LIB.obj>$0x2a4  $Tramp$S$$ADC_init
-   11e01c04     0c022c00     0c01fcf0   srmcode.obj (.text)
+   11e01c04     0c0242e0     0c0202f0   srmcode.obj (.text)
 $.text:mwio4.lib<PEV_INV_LIB.obj>$0x30c  $Tramp$S$$PEV_sync_ad_init
-   11e0030c     0c022c10     0c01fce8   srmcode.obj (.text)
+   11e0030c     0c0242f0     0c0202e8   srmcode.obj (.text)
 $.text:mwio4.lib<gpio_int.obj>$0x14c  $Tramp$S$$GPI_enable_int_vo
-   11e036cc     0c022c20     0c01fce0   srmcode.obj (.text)
+   11e036cc     0c024300     0c0202e0   srmcode.obj (.text)
 $.text:mwio4.lib<gpio_int.obj>$0x0  $Tramp$S$$GPI_setVector_vo
-   11e03580     0c022c30     0c01fccc   srmcode.obj (.text)
+   11e03580     0c024310     0c0202cc   srmcode.obj (.text)
 $.text:mwio4.lib<PEV_INV_LIB.obj>$0xde0  $Tramp$S$$PEV_int_init
-   11e00de0     0c022c40     0c01fcb0   srmcode.obj (.text)
+   11e00de0     0c024320     0c0202b0   srmcode.obj (.text)
 $.text:mwio4.lib<timer_lib.obj>$0x320  $Tramp$S$$C6657_timer1_start
-   11e02300     0c022c50     0c01fc94   srmcode.obj (.text)
+   11e02300     0c024330     0c020294   srmcode.obj (.text)
 $.text:mwio4.lib<timer_lib.obj>$0x3e4  $Tramp$S$$C6657_timer1_enable_int
-   11e023c4     0c022c60     0c01fc90   srmcode.obj (.text)
+   11e023c4     0c024340     0c020290   srmcode.obj (.text)
 $.text:mwio4.lib<timer_lib.obj>$0x34c  $Tramp$S$$C6657_timer1_init_vector
-   11e0232c     0c022c70     0c01fc8c   srmcode.obj (.text)
+   11e0232c     0c024350     0c02028c   srmcode.obj (.text)
 $.text:mwio4.lib<timer_lib.obj>$0x370  $Tramp$S$$C6657_timer1_init
-   11e02350     0c022c80     0c01fc74   srmcode.obj (.text)
+   11e02350     0c024360     0c020274   srmcode.obj (.text)
 $.text:mwio4.lib<mwintc.obj>$0x410  $Tramp$S$$IRQ_globalDisable
-   11e03050     0c022c90     0c01fc68   srmcode.obj (.text)
+   11e03050     0c024370     0c020268   srmcode.obj (.text)
 $.text:mwio4.lib<ADC_LIB.obj>$0x314  $Tramp$S$$ADC_in_grp
-   11e01c74     0c022ca0     0c01f158   srmcode.obj (.text:retain)
-$.text:mwio4.lib<PEV_INV_LIB.obj>$0xd70  $Tramp$S$$PEV_inverter_control_gate
-   11e00d70     0c022cb0     0c01efe4   srmcode.obj (.text:retain)
-                             0c01efe8   srmcode.obj (.text:retain)
+   11e01c74     0c024380     0c01e7ec   srmcode.obj (.text:retain)
 $.text:mwio4.lib<PEV_INV_LIB.obj>$0x17a4  $Tramp$S$$PEV_abz_read
-   11e017a4     0c022cc0     0c01eee0   srmcode.obj (.text:retain)
+   11e017a4     0c024390     0c01e774   srmcode.obj (.text:retain)
+$.text:mwio4.lib<PEV_INV_LIB.obj>$0xd70  $Tramp$S$$PEV_inverter_control_gate
+   11e00d70     0c0243a0     0c01e5e8   srmcode.obj (.text:retain)
+                             0c01e5ec   srmcode.obj (.text:retain)
 $.text:mwio4.lib<gpio_int.obj>$0xd4  $Tramp$S$$GPI_int_ack_vo
-   11e03654     0c022cd0     0c01ee8c   srmcode.obj (.text:retain)
+   11e03654     0c0243b0     0c01e4ec   srmcode.obj (.text:retain)
 $.text:mwio4.lib<PEV_INV_LIB.obj>$0x106c  $Tramp$S$$PEV_ad_in_grp
-   11e0106c     0c022ce0     0c01ed2c   srmcode.obj (.text:retain)
-                             0c01eea4   srmcode.obj (.text:retain)
+   11e0106c     0c0243c0     0c01e38c   srmcode.obj (.text:retain)
+                             0c01e504   srmcode.obj (.text:retain)
 $.text:mwio4.lib<timer_lib.obj>$0x480  $Tramp$S$$C6657_timer1_clear_eventflag
-   11e02460     0c022cf0     0c01ed24   srmcode.obj (.text:retain)
+   11e02460     0c0243d0     0c01e384   srmcode.obj (.text:retain)
 $.text:CSL_GPIO_open:ti.csl.ae66<csl_gpioGetBaseAddress.oe66>$0x0  $Tramp$S$$CSL_GPIO_open
-   0c0229a0     11e03a20     11e036a8   mwio4.lib : gpio_int.obj (.text)
+   0c024080     11e03a20     11e036a8   mwio4.lib : gpio_int.obj (.text)
 $.text:__c6xabi_fixdu:rts6600_elf.lib<fixdu.obj>$0x0  $Tramp$S$$__c6xabi_fixdu
-   0c022640     11e03a30     11e0209c   mwio4.lib : timer_lib.obj (.text)
+   0c023b00     11e03a30     11e0209c   mwio4.lib : timer_lib.obj (.text)
                              11e02210             : timer_lib.obj (.text)
                              11e023b0             : timer_lib.obj (.text)
                              11e02550             : timer_lib.obj (.text)
 $.text:__c6xabi_divd:rts6600_elf.lib<divd.obj>$0x0  $Tramp$S$$__c6xabi_divd
-   0c0204c0     11e03a40     11e02094   mwio4.lib : timer_lib.obj (.text)
+   0c020ac0     11e03a40     11e02094   mwio4.lib : timer_lib.obj (.text)
                              11e02208             : timer_lib.obj (.text)
                              11e023a8             : timer_lib.obj (.text)
                              11e02548             : timer_lib.obj (.text)
 $.text:__divi:rts6600_elf.lib<divi.obj>$0x0  $Tramp$S$$__c6xabi_divi
-   0c022140     11e03a50     11e001f8   mwio4.lib : PEV_INV_LIB.obj (.text)
+   0c023480     11e03a50     11e001f8   mwio4.lib : PEV_INV_LIB.obj (.text)
                              11e00448             : PEV_INV_LIB.obj (.text)
                              11e00470             : PEV_INV_LIB.obj (.text)
                              11e00658             : PEV_INV_LIB.obj (.text)
@@ -374,7 +393,9 @@ address    name
 11e01980   ADC_set_trigger_offset
 11e01960   ADC_start
 11f034a4   A_aligned_encoder_count
-0c022a20   C$$EXIT
+11f0357c   AdjustFre
+11f03578   AdjustTorque
+0c024100   C$$EXIT
 11e0260c   C6657_timer0_clear
 11e025f8   C6657_timer0_clear_eventflag
 11e025b8   C6657_timer0_disable_int
@@ -414,7 +435,7 @@ address    name
 11e03080   CSL2_intcHwControl
 11e03734   CSL2_intcOpen2
 11e03720   CSL2_loadResource
-0c0229a0   CSL_GPIO_open
+0c024080   CSL_GPIO_open
 11e03928   CSL_intcGlobalEnable
 11e03980   CSL_intcGlobalNmiEnable
 11e038c0   CSL_intcInterruptDisable
@@ -432,7 +453,7 @@ address    name
 11e027a0   EMF_Write2_s32
 11e02698   EMF_WriteFlashRom_s32
 11e02620   EMF_Write_s32
-0c024be0   EMIF_IntrErr_sts
+0c024c40   EMIF_IntrErr_sts
 11e036ec   GPI_disable_int_vo
 11e036cc   GPI_enable_int_vo
 11e036a4   GPI_init_vo
@@ -442,10 +463,10 @@ address    name
 11e03030   IRQ_globalEnable
 11e03028   IRQ_globalRestore
 11f03548   Idc
-0c01e860   KLAB_curCtrl_output_outVol
-0c01e688   KLAB_curCtrl_update_ssFunc
+0c01f860   KLAB_curCtrl_output_outVol
+0c01f688   KLAB_curCtrl_update_ssFunc
 11f034f0   MAX_PHASE_CURRENT
-0c01fbd0   MW_main
+0c0201d0   MW_main
 11e01914   PEV_abz_clear
 11e018e0   PEV_abz_clear_resolver_err
 11e018a4   PEV_abz_get_resolver_err
@@ -465,8 +486,8 @@ address    name
 11e00f98   PEV_ad_set_offset
 11e00f48   PEV_ad_set_range
 11e00f10   PEV_ad_start
-0c022784   PEV_get_fpga_ver
-0c022740   PEV_init
+0c023cc4   PEV_get_fpga_ver
+0c023c80   PEV_init
 11e00de0   PEV_int_init
 11e00da8   PEV_inverter_control_break
 11e00d70   PEV_inverter_control_gate
@@ -491,7 +512,8 @@ address    name
 11e00078   PEV_updown_init_maxcount
 11e00034   PEV_updown_read_cnt
 11e00000   PEV_updown_set_mode
-0c022d88   R
+11f03580   Proposed_Method_On
+0c024468   R
 11f0356c   RPM_SET
 11f0350c   SCOPE_abz
 11f03524   SCOPE_compensation
@@ -513,10 +535,10 @@ address    name
 11f03520   SCOPE_strain_ref
 11f03510   SCOPE_theta
 11f03534   SCOPE_torque
-0c01f0b4   StrainGaugeRead
+0c01e6bc   StrainGaugeRead
 11f0349c   StrainGaugeRead_interval
 11f03544   Vdc
-0c024b88   Z
+0c024be8   Z
 11e03a00   _CSL2_intcDispatcherDummy
 11e03948   _CSL_intcGlobalDisable
 11e039bc   _CSL_intcGlobalExcepClear
@@ -527,10 +549,24 @@ address    name
 11e038f8   _CSL_intcInterruptRestore
 11e038ec   _CSL_intcInterruptSet
 11e03910   _CSL_intcQueryInterruptStatus
-0c027f68   __TI_CINIT_Base
-0c027f80   __TI_CINIT_Limit
-0c027f60   __TI_Handler_Table_Base
-0c027f68   __TI_Handler_Table_Limit
+0c01e0a8   _Denorm
+0c0227a0   _Dnorm
+0c022540   _Dscale
+0c023880   _Dtest
+0c01e0b8   _Eps
+0c023d80   _Feraise
+0c01e0c8   _Hugeval
+0c021da0   _Hypot
+0c01e0d8   _Inf
+0c01e0e8   _Nan
+0c01e108   _Rteps
+0c01e0f8   _Snan
+0c01e118   _Xbig
+0c01e120   _Zero
+0c027c90   __TI_CINIT_Base
+0c027ca8   __TI_CINIT_Limit
+0c027c84   __TI_Handler_Table_Base
+0c027c8c   __TI_Handler_Table_Limit
 UNDEFED    __TI_INITARRAY_Base
 UNDEFED    __TI_INITARRAY_Limit
 11f03498   __TI_STACK_END
@@ -539,118 +575,127 @@ UNDEFED    __TI_INITARRAY_Limit
 UNDEFED    __TI_TLS_INIT_Base
 UNDEFED    __TI_TLS_INIT_Limit
 00000001   __TI_args_main
-0c022840   __TI_cpp_init
-0c022a40   __TI_decompress_none
-0c022a60   __TI_decompress_rle24
-0c01e1a0   __TI_enable_exit_profile_output
+0c023de0   __TI_cpp_init
+0c024120   __TI_decompress_none
+0c024140   __TI_decompress_rle24
+0c01e280   __TI_enable_exit_profile_output
 ffffffff   __TI_pprof_out_hndl
 ffffffff   __TI_prof_data_size
 ffffffff   __TI_prof_data_start
-0c0223a0   __TI_tls_init
+0c0237c0   __TI_tls_init
 ffffffff   __binit__
-0c0204c0   __c6xabi_divd
-0c0217a0   __c6xabi_divf
-0c022140   __c6xabi_divi
-0c022220   __c6xabi_divu
-0c0229e0   __c6xabi_errno_addr
-0c022640   __c6xabi_fixdu
-0c0228a0   __c6xabi_frcmpyd_div
-0c022900   __c6xabi_llshru
-0c022460   __c6xabi_nround
-0c022a00   __c6xabi_trunc
+0c020ac0   __c6xabi_divd
+0c022040   __c6xabi_divf
+0c023480   __c6xabi_divi
+0c023640   __c6xabi_divu
+0c0240c0   __c6xabi_errno_addr
+0c023b00   __c6xabi_fixdu
+0c023e40   __c6xabi_frcmpyd_div
+0c023ea0   __c6xabi_llshru
+0c023920   __c6xabi_nround
+0c0240e0   __c6xabi_trunc
 ffffffff   __c_args__
-0c022140   __divi
-0c022220   __divu
-0c01e1a4   __errno
-0c022960   _args_main
-0c021f40   _auto_init_elf
-0c0226c0   _c_int00
-0c01e198   _cleanup_ptr
-0c01e19c   _dtors_ptr
+0c023480   __divi
+0c023640   __divu
+0c01e284   __errno
+0c023fc0   _args_main
+0c023280   _auto_init_elf
+0c023b80   _c_int00
+0c01e278   _cleanup_ptr
+0c01e27c   _dtors_ptr
 11f00490   _mwSinTbl
 11f02498   _stack
-0c023788   a_fft
-0c023b88   a_fft_new
-0c024388   a_fft_neww
-0c022a20   abort
-11f03584   abz_prev
-0c01e158   adc_offset_BND0
-0c01e128   adc_offset_BND1
-0c01e178   adc_range_BND0
+0c0246e8   a_fft
+0c0247e8   a_fft_new
+0c0249e8   a_fft_neww
+0c024100   abort
+11f03590   abz_prev
+0c01e238   adc_offset_BND0
+0c01e1e8   adc_offset_BND1
+0c01e258   adc_range_BND0
 11f0354c   adjustFedIu
+0c0229c0   atan
+0c022d00   atan2
 11f03570   avg_max_count
 0c018000   avg_record_times
-0c023988   b_fft
-0c023d88   b_fft_new
-0c024588   b_fft_neww
+0c024768   b_fft
+0c024868   b_fft_new
+0c024a68   b_fft_neww
 ffffffff   binit
+0c023f00   cabs
+0c023f60   carg
 11e02d08   cic0Out2Evnt
-0c01e478   combineFourierSeries
+0c024000   cimag
+0c01f478   combineFourierSeries
 0c019000   compensation
-0c022040   copy_in
-0c0214e0   cos
-11f03580   current_step
-0c022d00   data
-0c01fa28   dft
-0c01e1a4   errno
-0c0227c0   evmI2CInit
-0c0222e0   exit
-11f0358c   factor_cal_time
-0c022d54   fedCurrent
-0c024c00   fedGain
-0c01ee04   gateControl
+0c023380   copy_in
+0c021ae0   cos
+0c024040   creal
+11f0358c   current_step
+0c0243e0   data
+0c020024   dft
+0c01e284   errno
+0c023d00   evmI2CInit
+0c023700   exit
+11f03598   factor_cal_time
+0c024434   fedCurrent
+0c024c80   fedGain
+0c022e80   frexp
+0c01e464   gateControl
 11f03498   gateControl_interval
 11f034b0   gateSignalSequence
-0c01e64c   generate_gateSignalSequence_Hysterisis
-0c01e604   generate_phase_gateSignalSequence
-0c01e298   generate_phase_square_reference
-0c01e510   generate_proposed_reference
-0c01e324   generate_square_reference
+0c01f64c   generate_gateSignalSequence_Hysterisis
+0c01f604   generate_phase_gateSignalSequence
+0c01f298   generate_phase_square_reference
+0c01f510   generate_proposed_reference
+0c01f324   generate_square_reference
 11f00450   gpio_int_map
 11f03564   hGpio
-11f0357c   hy_band
+11f03588   hy_band
+0c023c00   hypot
 11f03550   hysFLagIu
 11f034a8   hysterisis_limit
 11f034b4   i0
 11f034b8   i1
 11f034bc   i2
-0c020354   i2cEepromGetStatus2
-0c0201d8   i2cEepromRead2
-0c01fe48   i2cEepromWriteBlock2
-0c0200c0   i2cEepromWriteByteAddr2
+0c020954   i2cEepromGetStatus2
+0c0207d8   i2cEepromRead2
+0c020448   i2cEepromWriteBlock2
+0c0206c0   i2cEepromWriteByteAddr2
 11f034c0   i3
 11f03558   i_fft
-0c01f7cc   idft
+0c01fdc8   idft
 11e02fe8   int_begin_nestint
 11e02f98   int_end_nestint
 11f00350   intcObj
 11f034ac   inverter_on
-0c023188   magnitude
-0c0229c0   main
-0c022500   memcpy
-0c0225a0   modf
-0c0214a4   mw_Osal_platformSpiCsEnter
-0c021490   mw_Osal_platformSpiCsExit
-11f035a4   mw_gp__CSL_intcCpuIntrTable
-0c021098   mw_nor_erase
-0c02102c   mw_nor_get_details
-0c020fb8   mw_nor_init
-0c020f04   mw_nor_read
-0c020e40   mw_nor_write
-0c021470   mw_platform_delaycycles
-0c021404   mw_platform_device_close
-0c0213c4   mw_platform_device_erase_block
-0c0212ec   mw_platform_device_open
-0c021250   mw_platform_device_read
-0c0211b4   mw_platform_device_write
-11f035a8   mw_platform_errno
+0c024568   magnitude
+0c0240a0   main
+0c0239c0   memcpy
+0c023560   memset
+0c023a60   modf
+0c021aa4   mw_Osal_platformSpiCsEnter
+0c021a90   mw_Osal_platformSpiCsExit
+11f035b0   mw_gp__CSL_intcCpuIntrTable
+0c021698   mw_nor_erase
+0c02162c   mw_nor_get_details
+0c0215b8   mw_nor_init
+0c021504   mw_nor_read
+0c021440   mw_nor_write
+0c021a70   mw_platform_delaycycles
+0c021a04   mw_platform_device_close
+0c0219c4   mw_platform_device_erase_block
+0c0218ec   mw_platform_device_open
+0c021850   mw_platform_device_read
+0c0217b4   mw_platform_device_write
+11f035b4   mw_platform_errno
 11e039e0   mw_setVect
-0c020cb8   mw_spi_claim
-0c020c4c   mw_spi_cmd
-0c020c40   mw_spi_cmd_read
-0c020c30   mw_spi_cmd_write
-0c020bc4   mw_spi_release
-0c020a80   mw_spi_xfer
+0c0212b8   mw_spi_claim
+0c02124c   mw_spi_cmd
+0c021240   mw_spi_cmd_read
+0c021230   mw_spi_cmd_write
+0c0211c4   mw_spi_release
+0c021080   mw_spi_xfer
 11e02f84   mwintc_clearSysInterrupt
 11e02f6c   mwintc_disableHostInterrupt
 11e02f54   mwintc_disableSysInterrupt
@@ -661,51 +706,52 @@ ffffffff   binit
 11e02d94   mwintc_setup
 11e02e14   mwintc_setup2
 11e02c74   mwintc_setupApp
-11f03590   n_com
-11f03594   n_offset
-0c022d6c   outVoltage
+11f0359c   n_com
+11f035a0   n_offset
+0c02444c   outVoltage
 11f034c4   p1_deg
 11f034d0   p1_rad
 11f034c8   p2_deg
 11f034d4   p2_rad
 11f034cc   p3_deg
 11f034d8   p3_rad
-0c022f88   phase
-0c0211a0   platform_write
-0c01e238   proposed_phase_deg2rad
-0c022d3c   refCurrent
-0c022d20   rotateValue
-11f03588   rotate_period_count_cal
-0c01f6a0   scope
-0c01eca0   scope_interrupt
+0c0244e8   phase
+0c0217a0   platform_write
+0c01f238   proposed_phase_deg2rad
+0c02441c   refCurrent
+0c024400   rotateValue
+11f03594   rotate_period_count_cal
+0c01fca0   scope
+0c01e300   scope_interrupt
 11f034a0   scope_interval
-0c021a20   sin
-0c021e20   sqrtf
+0c0222c0   sin
+0c023000   sqrt
+0c023160   sqrtf
 11f034ec   square_peak
-0c01e200   square_phase_deg2rad
-0c024bbc   ssFunc_output_Y
-0c024b98   ssFunc_states_X
+0c01f200   square_phase_deg2rad
+0c024c1c   ssFunc_output_Y
+0c024bf8   ssFunc_states_X
 11f03554   strain
 0c01a000   strain_avg
 0c01b000   strain_avg_ffted
 0c01c000   strain_avg_temp
-11f03578   strain_offset
+11f03584   strain_offset
 0c01d000   strain_ref
 11f034e0   theta_off_deg
 11f034e8   theta_off_rad
 11f034dc   theta_on_deg
 11f034e4   theta_on_rad
-11f03598   tmr1regs
-11f0359c   tmr2regs
-11f035a0   tmr3regs
+11f035a4   tmr1regs
+11f035a8   tmr2regs
+11f035ac   tmr3regs
 11f03574   value_cutoff
 11f034b2   virtual_frequency
-0c023388   x_fft
-0c023f88   x_fft_new
-0c024788   x_fft_neww
-0c023588   y_fft
-0c024188   y_fft_new
-0c024988   y_fft_neww
+0c0245e8   x_fft
+0c0248e8   x_fft_new
+0c024ae8   x_fft_neww
+0c024668   y_fft
+0c024968   y_fft_new
+0c024b68   y_fft_neww
 
 
 GLOBAL SYMBOLS: SORTED BY Symbol Address 
@@ -720,117 +766,141 @@ address    name
 0c01b000   strain_avg_ffted
 0c01c000   strain_avg_temp
 0c01d000   strain_ref
-0c01e128   adc_offset_BND1
-0c01e158   adc_offset_BND0
-0c01e178   adc_range_BND0
-0c01e198   _cleanup_ptr
-0c01e19c   _dtors_ptr
-0c01e1a0   __TI_enable_exit_profile_output
-0c01e1a4   __errno
-0c01e1a4   errno
-0c01e200   square_phase_deg2rad
-0c01e238   proposed_phase_deg2rad
-0c01e298   generate_phase_square_reference
-0c01e324   generate_square_reference
-0c01e478   combineFourierSeries
-0c01e510   generate_proposed_reference
-0c01e604   generate_phase_gateSignalSequence
-0c01e64c   generate_gateSignalSequence_Hysterisis
-0c01e688   KLAB_curCtrl_update_ssFunc
-0c01e860   KLAB_curCtrl_output_outVol
-0c01eca0   scope_interrupt
-0c01ee04   gateControl
-0c01f0b4   StrainGaugeRead
-0c01f6a0   scope
-0c01f7cc   idft
-0c01fa28   dft
-0c01fbd0   MW_main
-0c01fe48   i2cEepromWriteBlock2
-0c0200c0   i2cEepromWriteByteAddr2
-0c0201d8   i2cEepromRead2
-0c020354   i2cEepromGetStatus2
-0c0204c0   __c6xabi_divd
-0c020a80   mw_spi_xfer
-0c020bc4   mw_spi_release
-0c020c30   mw_spi_cmd_write
-0c020c40   mw_spi_cmd_read
-0c020c4c   mw_spi_cmd
-0c020cb8   mw_spi_claim
-0c020e40   mw_nor_write
-0c020f04   mw_nor_read
-0c020fb8   mw_nor_init
-0c02102c   mw_nor_get_details
-0c021098   mw_nor_erase
-0c0211a0   platform_write
-0c0211b4   mw_platform_device_write
-0c021250   mw_platform_device_read
-0c0212ec   mw_platform_device_open
-0c0213c4   mw_platform_device_erase_block
-0c021404   mw_platform_device_close
-0c021470   mw_platform_delaycycles
-0c021490   mw_Osal_platformSpiCsExit
-0c0214a4   mw_Osal_platformSpiCsEnter
-0c0214e0   cos
-0c0217a0   __c6xabi_divf
-0c021a20   sin
-0c021e20   sqrtf
-0c021f40   _auto_init_elf
-0c022040   copy_in
-0c022140   __c6xabi_divi
-0c022140   __divi
-0c022220   __c6xabi_divu
-0c022220   __divu
-0c0222e0   exit
-0c0223a0   __TI_tls_init
-0c022460   __c6xabi_nround
-0c022500   memcpy
-0c0225a0   modf
-0c022640   __c6xabi_fixdu
-0c0226c0   _c_int00
-0c022740   PEV_init
-0c022784   PEV_get_fpga_ver
-0c0227c0   evmI2CInit
-0c022840   __TI_cpp_init
-0c0228a0   __c6xabi_frcmpyd_div
-0c022900   __c6xabi_llshru
-0c022960   _args_main
-0c0229a0   CSL_GPIO_open
-0c0229c0   main
-0c0229e0   __c6xabi_errno_addr
-0c022a00   __c6xabi_trunc
-0c022a20   C$$EXIT
-0c022a20   abort
-0c022a40   __TI_decompress_none
-0c022a60   __TI_decompress_rle24
-0c022d00   data
-0c022d20   rotateValue
-0c022d3c   refCurrent
-0c022d54   fedCurrent
-0c022d6c   outVoltage
-0c022d88   R
-0c022f88   phase
-0c023188   magnitude
-0c023388   x_fft
-0c023588   y_fft
-0c023788   a_fft
-0c023988   b_fft
-0c023b88   a_fft_new
-0c023d88   b_fft_new
-0c023f88   x_fft_new
-0c024188   y_fft_new
-0c024388   a_fft_neww
-0c024588   b_fft_neww
-0c024788   x_fft_neww
-0c024988   y_fft_neww
-0c024b88   Z
-0c024b98   ssFunc_states_X
-0c024bbc   ssFunc_output_Y
-0c024be0   EMIF_IntrErr_sts
-0c024c00   fedGain
-0c027f60   __TI_Handler_Table_Base
-0c027f68   __TI_CINIT_Base
-0c027f68   __TI_Handler_Table_Limit
-0c027f80   __TI_CINIT_Limit
+0c01e0a8   _Denorm
+0c01e0b8   _Eps
+0c01e0c8   _Hugeval
+0c01e0d8   _Inf
+0c01e0e8   _Nan
+0c01e0f8   _Snan
+0c01e108   _Rteps
+0c01e118   _Xbig
+0c01e120   _Zero
+0c01e1e8   adc_offset_BND1
+0c01e238   adc_offset_BND0
+0c01e258   adc_range_BND0
+0c01e278   _cleanup_ptr
+0c01e27c   _dtors_ptr
+0c01e280   __TI_enable_exit_profile_output
+0c01e284   __errno
+0c01e284   errno
+0c01e300   scope_interrupt
+0c01e464   gateControl
+0c01e6bc   StrainGaugeRead
+0c01f200   square_phase_deg2rad
+0c01f238   proposed_phase_deg2rad
+0c01f298   generate_phase_square_reference
+0c01f324   generate_square_reference
+0c01f478   combineFourierSeries
+0c01f510   generate_proposed_reference
+0c01f604   generate_phase_gateSignalSequence
+0c01f64c   generate_gateSignalSequence_Hysterisis
+0c01f688   KLAB_curCtrl_update_ssFunc
+0c01f860   KLAB_curCtrl_output_outVol
+0c01fca0   scope
+0c01fdc8   idft
+0c020024   dft
+0c0201d0   MW_main
+0c020448   i2cEepromWriteBlock2
+0c0206c0   i2cEepromWriteByteAddr2
+0c0207d8   i2cEepromRead2
+0c020954   i2cEepromGetStatus2
+0c020ac0   __c6xabi_divd
+0c021080   mw_spi_xfer
+0c0211c4   mw_spi_release
+0c021230   mw_spi_cmd_write
+0c021240   mw_spi_cmd_read
+0c02124c   mw_spi_cmd
+0c0212b8   mw_spi_claim
+0c021440   mw_nor_write
+0c021504   mw_nor_read
+0c0215b8   mw_nor_init
+0c02162c   mw_nor_get_details
+0c021698   mw_nor_erase
+0c0217a0   platform_write
+0c0217b4   mw_platform_device_write
+0c021850   mw_platform_device_read
+0c0218ec   mw_platform_device_open
+0c0219c4   mw_platform_device_erase_block
+0c021a04   mw_platform_device_close
+0c021a70   mw_platform_delaycycles
+0c021a90   mw_Osal_platformSpiCsExit
+0c021aa4   mw_Osal_platformSpiCsEnter
+0c021ae0   cos
+0c021da0   _Hypot
+0c022040   __c6xabi_divf
+0c0222c0   sin
+0c022540   _Dscale
+0c0227a0   _Dnorm
+0c0229c0   atan
+0c022d00   atan2
+0c022e80   frexp
+0c023000   sqrt
+0c023160   sqrtf
+0c023280   _auto_init_elf
+0c023380   copy_in
+0c023480   __c6xabi_divi
+0c023480   __divi
+0c023560   memset
+0c023640   __c6xabi_divu
+0c023640   __divu
+0c023700   exit
+0c0237c0   __TI_tls_init
+0c023880   _Dtest
+0c023920   __c6xabi_nround
+0c0239c0   memcpy
+0c023a60   modf
+0c023b00   __c6xabi_fixdu
+0c023b80   _c_int00
+0c023c00   hypot
+0c023c80   PEV_init
+0c023cc4   PEV_get_fpga_ver
+0c023d00   evmI2CInit
+0c023d80   _Feraise
+0c023de0   __TI_cpp_init
+0c023e40   __c6xabi_frcmpyd_div
+0c023ea0   __c6xabi_llshru
+0c023f00   cabs
+0c023f60   carg
+0c023fc0   _args_main
+0c024000   cimag
+0c024040   creal
+0c024080   CSL_GPIO_open
+0c0240a0   main
+0c0240c0   __c6xabi_errno_addr
+0c0240e0   __c6xabi_trunc
+0c024100   C$$EXIT
+0c024100   abort
+0c024120   __TI_decompress_none
+0c024140   __TI_decompress_rle24
+0c0243e0   data
+0c024400   rotateValue
+0c02441c   refCurrent
+0c024434   fedCurrent
+0c02444c   outVoltage
+0c024468   R
+0c0244e8   phase
+0c024568   magnitude
+0c0245e8   x_fft
+0c024668   y_fft
+0c0246e8   a_fft
+0c024768   b_fft
+0c0247e8   a_fft_new
+0c024868   b_fft_new
+0c0248e8   x_fft_new
+0c024968   y_fft_new
+0c0249e8   a_fft_neww
+0c024a68   b_fft_neww
+0c024ae8   x_fft_neww
+0c024b68   y_fft_neww
+0c024be8   Z
+0c024bf8   ssFunc_states_X
+0c024c1c   ssFunc_output_Y
+0c024c40   EMIF_IntrErr_sts
+0c024c80   fedGain
+0c027c84   __TI_Handler_Table_Base
+0c027c8c   __TI_Handler_Table_Limit
+0c027c90   __TI_CINIT_Base
+0c027ca8   __TI_CINIT_Limit
 11e00000   PEV_updown_set_mode
 11e00034   PEV_updown_read_cnt
 11e00078   PEV_updown_init_maxcount
@@ -1035,19 +1105,22 @@ address    name
 11f0356c   RPM_SET
 11f03570   avg_max_count
 11f03574   value_cutoff
-11f03578   strain_offset
-11f0357c   hy_band
-11f03580   current_step
-11f03584   abz_prev
-11f03588   rotate_period_count_cal
-11f0358c   factor_cal_time
-11f03590   n_com
-11f03594   n_offset
-11f03598   tmr1regs
-11f0359c   tmr2regs
-11f035a0   tmr3regs
-11f035a4   mw_gp__CSL_intcCpuIntrTable
-11f035a8   mw_platform_errno
+11f03578   AdjustTorque
+11f0357c   AdjustFre
+11f03580   Proposed_Method_On
+11f03584   strain_offset
+11f03588   hy_band
+11f0358c   current_step
+11f03590   abz_prev
+11f03594   rotate_period_count_cal
+11f03598   factor_cal_time
+11f0359c   n_com
+11f035a0   n_offset
+11f035a4   tmr1regs
+11f035a8   tmr2regs
+11f035ac   tmr3regs
+11f035b0   mw_gp__CSL_intcCpuIntrTable
+11f035b4   mw_platform_errno
 ffffffff   __TI_pprof_out_hndl
 ffffffff   __TI_prof_data_size
 ffffffff   __TI_prof_data_start
@@ -1059,4 +1132,4 @@ UNDEFED    __TI_INITARRAY_Limit
 UNDEFED    __TI_TLS_INIT_Base
 UNDEFED    __TI_TLS_INIT_Limit
 
-[346 symbols]
+[373 symbols]
